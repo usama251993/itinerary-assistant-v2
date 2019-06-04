@@ -1,0 +1,153 @@
+<div class="day-list">
+  <div class="form-holder">
+    <form action="javascript:void(0)" [formGroup]="newTripForm">
+      <!-- <div class="card-holder">
+        <mat-card class="source-card mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>
+              <span>Details for the trip</span>
+            </mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="form-field-holder">
+              <div class="form-field">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Source City" formControlName="source" autofocus="true">
+                  <mat-error *ngIf="newTripForm.get('source').hasError('required')">
+                    <span>Source City is required!</span>
+                  </mat-error>
+                  <button mat-button *ngIf="newTripForm.get('source').value" matSuffix mat-icon-button
+                    (click)="clearInput(newTripForm.get('source'))" tabindex="0">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-field-holder">
+              <div class="form-field">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Destination City" formControlName="destination">
+                  <mat-error *ngIf="newTripForm.get('destination').hasError('required')">
+                    <span>Destination City is required!</span>
+                  </mat-error>
+                  <button mat-button *ngIf="newTripForm.get('destination').value" matSuffix mat-icon-button
+                    (click)="clearInput(newTripForm.get('destination'))" tabindex="0">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-field-holder">
+              <div class="form-field">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="startDatePicker" [min]="today" placeholder="Start Date"
+                    formControlName="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatePicker></mat-datepicker>
+                  <mat-error *ngIf="newTripForm.get('startDate').hasError('required')">
+                    <span>Trip Start Date is required!</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-field-holder" *ngIf="newTripForm.get('startDate').value">
+              <div class="form-field">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="endDatePicker" [min]="newTripForm.get('startDate').value"
+                    placeholder="End Date" formControlName="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                  <mat-error *ngIf="newTripForm.get('endDate').hasError('required')">
+                    <span>Trip End Date is required!</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="button-holder">
+              <div class="button">
+                <button mat-raised-button color="primary" *ngIf="newTripForm.valid" (click)="formSubmit()">
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div> -->
+      <div class="card-holder">
+        <mat-card class="master-card" formArrayName="tripDays">
+          <mat-card-header backgroundColor="primary">
+            <mat-card-title>
+              <!-- <mat-form-field>
+                <input matInput type="text" placeholder="Enter the Trip Name">
+              </mat-form-field> -->
+              <span>North East India</span>
+            </mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <div class="form-field-holder">
+              <div class="form-field">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Source City" formControlName="source" autofocus="true">
+                  <mat-error *ngIf="newTripForm.get('source').hasError('required')">
+                    <span>Source City is required!</span>
+                  </mat-error>
+                  <button mat-button *ngIf="newTripForm.get('source').value" matSuffix mat-icon-button
+                    (click)="clearInput(newTripForm.get('source'))" tabindex="0">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div> -->
+            <mat-card class="day-card">
+              <mat-card-header>
+                <mat-card-title>
+                  <span>Day 1</span>
+                </mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Source City">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Destination City">
+                </mat-form-field>
+                <button mat-raised-button color="primary">
+                  <span>Save</span>
+                </button>
+              </mat-card-content>
+            </mat-card>
+            <!-- <div class="card-separation"></div> -->
+            <mat-card class="day-card">
+              <mat-card-header>
+                <mat-card-title>
+                  <span>Day 2</span>
+                </mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Source City">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Destination City">
+                </mat-form-field>
+                <button mat-raised-button color="primary">
+                  <span>Save</span>
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="day-details">
+
+</div>

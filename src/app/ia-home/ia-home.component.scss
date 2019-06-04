@@ -1,0 +1,19 @@
+mat-toolbar span {
+  cursor: pointer;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.button-holder {
+  padding: 1rem;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div.button {
+  padding: 1rem;
+}
