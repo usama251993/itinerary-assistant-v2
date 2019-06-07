@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 
 import { IaTripModel } from '../shared/models/ia-trip.model';
 import { IaTripService } from '../shared/services/ia-trip.service';
-import { IaStayRoomModel } from '../shared/models/ia-stay-room.model';
 
 export interface HotelRoom {
   roomType: string;
@@ -20,11 +20,13 @@ export class IaViewTripComponent implements OnInit {
   trips: IaTripModel[] = []
 
   displayedColumns: string[] = ["type", "cost"];
+  // dataSource;
 
   constructor(private tripService: IaTripService) { }
 
   ngOnInit(): void {
     this.trips = this.tripService.trips;
+    // this.displayedColumns
   }
 
 }

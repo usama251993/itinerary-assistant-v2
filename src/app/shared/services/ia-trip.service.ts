@@ -446,5 +446,16 @@ export class IaTripService {
     })
   ]
 
+  tripInitData: FormData;
+
   constructor() { }
+
+  initNewTrip(formData: FormData) {
+    this.tripInitData = formData;
+  }
+
+  createNewTrip(formData: FormData) {
+
+  }
+
 }

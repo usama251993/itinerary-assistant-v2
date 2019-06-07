@@ -1,0 +1,132 @@
+div.design-holder {
+  display: flex;
+  flex-flow: row wrap;
+
+  div.day-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.5rem;
+
+    mat-card.day-card,
+    mat-accordion.day-card {
+      margin: 0.5rem;
+
+      div.start-city-detail-holder {
+        padding: 1rem;
+      }
+    }
+  }
+
+  div.day-details {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    padding: 0.5rem;
+
+    mat-tab-group {
+      /deep/ {
+        div.mat-tab-label-active {
+          opacity: 1 !important;
+        }
+      }
+      div.tab-content {
+        display: flex;
+        // padding: 0.5rem;
+        flex-direction: column;
+
+        > * {
+          margin: 0.5rem;
+        }
+
+        &.attraction-card-holder {
+          // flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          div.button-holder {
+            position: absolute;
+            bottom: 0rem;
+            right: 0rem;
+          }
+
+          mat-card.attraction-card {
+            width: 25rem;
+          }
+        }
+
+        &.hotel-card-holder {
+          // flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          div.button-holder {
+            position: absolute;
+            bottom: 0rem;
+            right: 0rem;
+          }
+
+          mat-card.hotel-card {
+            // width: 25rem;
+
+            /deep/ {
+              div.mat-card-header-text {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+              }
+            }
+
+            div.hotel-detail-holder {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            mat-card-content {
+              div.table-holder {
+                display: flex;
+                flex-direction: column;
+
+                table.mat-table {
+                  th,
+                  td {
+                    padding: 0.5rem;
+                  }
+                }
+
+                div.button-holder {
+                  position: relative;
+                  div.button {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: 0.5rem;
+                    // align-items: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.button-holder {
+    div.button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0.5rem;
+      // align-items: center;
+    }
+  }
+}

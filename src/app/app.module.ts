@@ -15,7 +15,8 @@ import {
   MatListModule,
   MatExpansionModule,
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,7 +60,8 @@ import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
     MatListModule,
     MatExpansionModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
   ],
   providers: [IaNavigationService, IaTripService],
   bootstrap: [AppComponent]
