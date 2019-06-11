@@ -54,3 +54,18 @@ Change in transit model to have properties to store
 1. Distance and time required to travel between places
 2. Coupon codes for transit
 3. Transit expenses
+
+# Commit #4:
+
+Design form is now merged with New Trip form and is now obsolete
+New Stepper based UI for New Trip Form which incorporates planning of the whole trip
+
+FormArray to enter details of the Room is unable to perform well with mat-table
+Works well with mat-accordion
+
+All the buttons are non functional except those to Add Day / Place / Stay / Room / Attraction, hence are therefore disabled
+
+Further Steps
+1. Transit Module from Commit #3
+2. Save the trip data
+3. Load the trip data

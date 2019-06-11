@@ -16,7 +16,9 @@ import {
   MatExpansionModule,
   MatTableModule,
   MatSortModule,
-  MatSelectModule
+  MatSelectModule,
+  MatStepperModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +33,7 @@ import { IaEditTripComponent } from './ia-edit-trip/ia-edit-trip.component';
 import { IaDesignTripComponent } from './ia-design-trip/ia-design-trip.component';
 import { IaTripService } from './shared/services/ia-trip.service';
 import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
+import { MaterialModule } from './shared/modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    // MaterialModule
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
@@ -61,7 +65,9 @@ import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
     MatExpansionModule,
     MatTableModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
+    MatSlideToggleModule
   ],
   providers: [IaNavigationService, IaTripService],
   bootstrap: [AppComponent]

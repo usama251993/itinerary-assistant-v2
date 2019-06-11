@@ -1,47 +1,93 @@
-div.form-holder {
-  padding: 1rem;
+div {
   display: flex;
   flex-direction: column;
+}
+
+div.form-holder {
+  padding: 1rem;
   justify-content: center;
   align-items: center;
 }
 
 mat-card.master-card {
-  max-width: 30rem;
-
-  mat-card-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /deep/ {
-      div.mat-card-header-text {
-        margin: 0rem;
-      }
-    }
-  }
-
   mat-card-content {
-    margin: 0rem;
-
     mat-form-field {
       display: flex;
       flex-direction: column;
       font-size: 1rem;
+    }
+
+    mat-horizontal-stepper {
+      div.button-holder {
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        div.button {
+          margin: 0.5rem;
+
+          button.next-button {
+            padding: 0rem 0.5rem 0rem 1rem;
+          }
+
+          button.previous-button {
+            padding: 0rem 1rem 0rem 0.5rem;
+          }
+        }
+      }
+
+      // table.mat-table {
+      //   th,
+      //   td {
+      //     padding: 0.5rem;
+      //   }
+      // }
+    }
+
+    mat-card.attraction-card {
+      margin: 0.5rem;
+    }
+
+    mat-card.hotel-card {
+      margin: 0.5rem;
+
+      mat-list-item {
+        height: unset;
+
+        /deep/ {
+          div.mat-list-item-content {
+            padding: 0rem;
+          }
+        }
+
+        div.room-detail {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          div.form-field-holder {
+            margin: 0rem 0.5rem;
+            flex-flow: row wrap;
+
+            div.form-field {
+              flex: 1;
+              margin: 0rem 0.5rem;
+            }
+          }
+        }
+      }
     }
   }
   mat-card-actions {
     margin: 0rem;
     padding: 0rem;
 
-    div.button-holder {
-      div.button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        // align-items: center;
-      }
-    }
+    // div.button-holder {
+    // div.button {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // }
+    // }
   }
 }

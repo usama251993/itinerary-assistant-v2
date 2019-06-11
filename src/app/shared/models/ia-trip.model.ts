@@ -7,6 +7,9 @@ export class IaTripModel {
   constructor(public trip: {
     id: number,
     title: string,
+    sourceCity: string,
+    startDate?: Date,
+    isOneDayTrip: boolean,
     days: IaTripDayModel[]
   }) { }
 

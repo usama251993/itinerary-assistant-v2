@@ -16,15 +16,14 @@ export class IaTripService {
   trips: IaTripModel[] = [
     new IaTripModel({
       id: 0,
+      sourceCity: "Mumbai",
+      startDate: new Date(Date.now()),
+      isOneDayTrip: false,
       title: "North East",
       days: [
         new IaTripDayModel({
+          isTerminalDay: true,
           places: [
-            new IaTripPlaceModel({
-              name: "Mumbai",
-              attractions: [],
-              stays: []
-            }),
             new IaTripPlaceModel({
               name: "Guwahati",
               attractions: [
@@ -381,6 +380,7 @@ export class IaTripService {
           ]
         }),
         new IaTripDayModel({
+          isTerminalDay: false,
           places: [
             new IaTripPlaceModel({
               name: "Shillong",
@@ -424,11 +424,6 @@ export class IaTripService {
                   ]
                 })
               ]
-            }),
-            new IaTripPlaceModel({
-              name: "Mumbai",
-              attractions: [],
-              stays: []
             })
           ],
           transit: [
@@ -445,6 +440,14 @@ export class IaTripService {
       ]
     })
   ]
+
+  roomOptions: { optionValue: string, optionText: string }[] = [
+    { optionValue: "single", optionText: "Single Occupancy" },
+    { optionValue: "double", optionText: "Double Occupancy" },
+    { optionValue: "multiple", optionText: "Multiple Occupancy" },
+    { optionValue: "dormitory", optionText: "Dormitory" },
+    { optionValue: "others", optionText: "Others" }
+  ];
 
   tripInitData: FormData;
 
