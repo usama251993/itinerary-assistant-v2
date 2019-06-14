@@ -1,0 +1,48 @@
+{
+  "tripInit": {
+    "startDate": "2019-06-13T18:30:00.000Z",
+    "sourceCity": "Mumbai"
+  },
+  "days": [
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Thane",
+              "attractions": [],
+              "stays": []
+            }
+          },
+          {
+            "place": {
+              "name": "Kalwa",
+              "attractions": [],
+              "stays": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Mumbra",
+              "attractions": [],
+              "stays": []
+            }
+          },
+          {
+            "place": {
+              "name": "Dombivli",
+              "attractions": [],
+              "stays": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,8 +1,9 @@
-<div class="view-container" *ngFor="let tripModel of trips">
+<div class="view-container" *ngFor="let singleTrip of trips">
 
-  <mat-tab-group backgroundColor="primary">
+  <!-- <mat-tab-group backgroundColor="primary"> -->
+  <mat-tab-group>
 
-    <mat-tab *ngFor="let dayModel of tripModel.trip.days; index as dayIndex">
+    <mat-tab *ngFor="let singleDay of singleTrip.trip.days; let dayIndex = index">
       <ng-template mat-tab-label>
         <div class="label-holder">
           <div class="day-index">
@@ -10,18 +11,19 @@
           </div>
           <!-- <div class="day-place-holder">
             <div class="day-place">
-              <span>{{ dayModel.day.places[0].place.name }}</span>
+              <span>{{ singleDay.day.places[0].place.name }}</span>
             </div>
             <mat-icon>navigate_next</mat-icon>
             <div class="day-place">
-              <span>{{ dayModel.day.places[1].place.name }}</span>
+              <span>{{ singleDay.day.places[1].place.name }}</span>
             </div>
           </div> -->
         </div>
       </ng-template>
 
       <ng-container>
-        <mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+        <!-- <mat-tab-group mat-align-tabs="center" backgroundColor="primary"> -->
+        <mat-tab-group mat-align-tabs="center">
           <!-- <mat-tab>
             <ng-template mat-tab-label>
               <span>Overview</span>
@@ -33,19 +35,19 @@
               <span>Tourist Attractions</span>
             </ng-template>
             <div class="tab-content attraction-card-holder">
-              <mat-card class="attraction-card" *ngFor="let placeModel of dayModel.day.places">
+              <mat-card class="attraction-card" *ngFor="let singlePlace of singleDay.day.places">
                 <mat-card-header>
                   <mat-card-title>
-                    <span>{{ placeModel.place.name }}</span>
+                    <span>{{ singlePlace.place.name }}</span>
                   </mat-card-title>
                   <mat-card-subtitle></mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                   <mat-accordion>
-                    <mat-expansion-panel *ngFor="let attractionModel of placeModel.place.attractions">
+                    <mat-expansion-panel *ngFor="let singleAttraction of singlePlace.place.attractions">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                          <span>{{ attractionModel.attraction.name }}</span>
+                          <span>{{ singleAttraction.attraction.name }}</span>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <div class="expansion-panel-contents">
@@ -60,39 +62,39 @@
 
           <mat-tab>
             <ng-template mat-tab-label>
-              <span>Hotel / Stay</span>
+              <span>Stay</span>
             </ng-template>
             <div class="tab-content">
 
               <mat-accordion>
-                <mat-expansion-panel *ngFor="let placeModel of dayModel.day.places">
+                <mat-expansion-panel *ngFor="let singlePlace of singleDay.day.places">
                   <mat-expansion-panel-header>
                     <mat-panel-title>
-                      <span>{{ placeModel.place.name }}</span>
+                      <span>{{ singlePlace.place.name }}</span>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="hotel-card-holder">
-                    <mat-card class="hotel-card" *ngFor="let stayModel of placeModel.place.stays">
+                  <div class="stay-card-holder">
+                    <mat-card class="stay-card" *ngFor="let singleStay of singlePlace.place.stays">
                       <mat-card-header>
                         <mat-card-title>
-                          <div class="hotel-name">
-                            <span>{{ stayModel.stay.name }}</span>
+                          <div class="stay-name">
+                            <span>{{ singleStay.stay.name }}</span>
                           </div>
                         </mat-card-title>
                         <mat-card-subtitle>
-                          <div class="hotel-detail-holder">
-                            <div class="hotel-address">
-                              <span>{{ stayModel.stay.address }}</span>
+                          <div class="stay-detail-holder">
+                            <div class="stay-address">
+                              <span>{{ singleStay.stay.address }}</span>
                             </div>
-                            <div class="hotel-contact">
-                              <span>{{ stayModel.stay.contact }}</span>
+                            <div class="stay-contact">
+                              <span>{{ singleStay.stay.contact }}</span>
                             </div>
                           </div>
                         </mat-card-subtitle>
                       </mat-card-header>
                       <mat-card-content>
                         <div class="table-holder">
-                          <mat-table [dataSource]="stayModel.stay.rooms">
+                          <mat-table [dataSource]="singleStay.stay.rooms">
                             <ng-container matColumnDef="type">
                               <mat-header-cell *matHeaderCellDef>
                                 <span>Room Type</span>
@@ -114,7 +116,7 @@
                           </mat-table>
                         </div>
                         <!-- <div class="table-holder">
-                          <table mat-table [dataSource]="stayModel.stay.rooms">
+                          <table mat-table [dataSource]="singleStay.stay.rooms">
                             <ng-container matColumnDef="type">
                               <th mat-header-cell *matHeaderCellDef>
                                 <span>Room Type</span>

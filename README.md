@@ -69,3 +69,28 @@ Further Steps
 1. Transit Module from Commit #3
 2. Save the trip data
 3. Load the trip data
+
+Pending BottomSheet confirm dialog
+Integration of SnackBar
+
+# Commit #5:
+
+BottomSheet and SnackBar successfully implemented with an option to switch between them to display Delete Comfimation Dialog
+Data could be successfully exported into a JSON file which can be downloaded
+Stepper UI for viewing trip is used
+Use of mat-table to hold the fields in New Trip for would be deprecated in upcoming couple of commits
+JSON is not downloadable on the first click of JSON Export button (needs to be fixed)
+
+Further Steps
+1. Load the trip data from a JSON file
+2. Edit the trip data
+  a. when a new trip is created
+  b. when a trip is loaded from a JSON file
+3. Optimize Trip Service
+  a. Merge the exportToJSON() and createTrip() methods
+  b. Optimise the use of for loops in the code
+  c. Create the importFromJSON() method
+4. Switch between Stepper UI and Tabs UI for viewing the trip
+5. Trip Overview Component to be designed
+6. Contacts to be used as a FormArray to hold multiple phone numbers for a Stay
+7. Transit Moule from Commit #3

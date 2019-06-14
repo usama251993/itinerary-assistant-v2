@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
@@ -11,5 +11,6 @@ export class IaNavigationService {
   goTo(destination: string, route: ActivatedRoute) {
     this.router.navigate(["../" + destination], { relativeTo: route });
   }
+
 
 }

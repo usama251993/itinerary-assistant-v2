@@ -5,6 +5,7 @@ import { IaNewTripComponent } from './ia-new-trip/ia-new-trip.component';
 import { IaEditTripComponent } from './ia-edit-trip/ia-edit-trip.component';
 import { IaDesignTripComponent } from './ia-design-trip/ia-design-trip.component';
 import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
+import { IaViewRevisedComponent } from './ia-view-revised/ia-view-revised.component';
 
 const routes: Routes = [
   { path: "home", component: IaHomeComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: "new", component: IaNewTripComponent },
   { path: "edit", component: IaEditTripComponent },
   { path: "design", component: IaDesignTripComponent },
-  { path: "view", component: IaViewTripComponent }
+  { path: "view", component: IaViewTripComponent },
+  { path: "view-revised", component: IaViewRevisedComponent }
 
 ];
 

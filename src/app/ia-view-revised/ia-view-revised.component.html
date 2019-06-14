@@ -1,0 +1,162 @@
+<div class="card-holder">
+  <mat-card class="master-card" *ngFor="let singleTrip of trips">
+    <mat-card-header>
+      <mat-card-title>
+        <span>Review Trip</span>
+      </mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="trip-detail-holder">
+        <div class="trip-detail">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <span>Trip Start Details</span>
+                </mat-panel-title>
+                <mat-panel-description></mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="accordion-detail-holder">
+                <div class="accordion-detail">
+                  <span>The trip starts from
+                    {{ singleTrip.trip.sourceCity }} on
+                    {{ singleTrip.trip.startDate | date }}</span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="trip-detail">
+          <mat-vertical-stepper>
+            <mat-step *ngFor="let singleDay of singleTrip.trip.days; let dayIndex = index;">
+              <ng-template matStepLabel>
+                <span *ngIf="dayIndex === 0 else travelOrEnd;">Start</span>
+                <ng-template #travelOrEnd>
+                  <span
+                    *ngIf="dayIndex === singleTrip.trip.days.length - 1; else travel">End</span>
+                  <ng-template #travel>
+                    <span>Travel</span>
+                  </ng-template>
+                </ng-template>
+              </ng-template>
+              <div class="step-detail-holder">
+                <div class="day-title-holder">
+                  <div class="day-title">
+                    <span>Day {{ dayIndex + 1 }} details</span>
+                  </div>
+                </div>
+                <mat-horizontal-stepper labelPosition="bottom">
+                  <mat-step
+                    *ngFor="let singlePlace of singleDay.day.places; let placeIndex = index;">
+                    <ng-template matStepLabel>
+                      <span>Place {{ placeIndex + 1 }}</span>
+                    </ng-template>
+                    <div class="step-detail-holder">
+                      <div class="place-name-holder">
+                        <div class="place-name">
+                          <span>{{ singlePlace.place.name }}</span>
+                        </div>
+                      </div>
+                      <mat-vertical-stepper>
+                        <mat-step>
+                          <ng-template matStepLabel>
+                            <span>Attractions</span>
+                          </ng-template>
+                          <div class="step-detail-holder">
+                            <div class="attraction-card-holder">
+                              <mat-card class="attraction-card"
+                                *ngFor="let singleAttraction of singlePlace.place.attractions; let attractionIndex = index;">
+                                <mat-card-header>
+                                  <mat-card-title>
+                                    <span>{{ singleAttraction.attraction.name }}</span>
+                                  </mat-card-title>
+                                  <mat-card-subtitle></mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                  <span>{{ singleAttraction.attraction.description }}</span>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                </mat-card-actions>
+                              </mat-card>
+                            </div>
+                          </div>
+                        </mat-step>
+                        <mat-step>
+                          <ng-template matStepLabel><span>Stays</span></ng-template>
+                          <div class="step-detail-holder">
+                            <div class="stay-card-holder">
+                              <mat-card class="stay-card"
+                                *ngFor="let singleStay of singlePlace.place.stays; let stayIndex = index;">
+                                <mat-card-header>
+                                  <mat-card-title>
+                                    <div class="stay-name">
+                                      <span>{{ singleStay.stay.name }}</span>
+                                    </div>
+                                  </mat-card-title>
+                                  <mat-card-subtitle>
+                                    <div class="stay-detail-holder">
+                                      <div class="stay-address">
+                                        <span>{{ singleStay.stay.address }}</span>
+                                      </div>
+                                      <div class="stay-contact">
+                                        <span>{{ singleStay.stay.contact }}</span>
+                                      </div>
+                                    </div>
+                                  </mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                  <div class="table-holder">
+                                    <mat-table [dataSource]="singleStay.stay.rooms">
+                                      <ng-container matColumnDef="type">
+                                        <mat-header-cell *matHeaderCellDef>
+                                          <span>Room Type</span>
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let cellDef">
+                                          <span>{{ cellDef.room.type }}</span>
+                                        </mat-cell>
+                                      </ng-container>
+                                      <ng-container matColumnDef="cost">
+                                        <mat-header-cell *matHeaderCellDef>
+                                          <span>Cost</span>
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let cellDef">
+                                          <span>{{ cellDef.room.cost }}</span>
+                                        </mat-cell>
+                                      </ng-container>
+                                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                    </mat-table>
+                                  </div>
+                                </mat-card-content>
+                              </mat-card>
+                            </div>
+                          </div>
+                        </mat-step>
+                      </mat-vertical-stepper>
+                    </div>
+                  </mat-step>
+                </mat-horizontal-stepper>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-holder">
+        <div class="button">
+          <button mat-raised-button color="primary">
+            <span>Edit Trip</span>
+          </button>
+        </div>
+        <div class="button">
+          <button mat-raised-button color="primary" (click)="exportTrip(singleTrip)">
+            <a [href]="export.fileURI" [download]="export.fileName" #downloadButton></a>
+            <span>JSON Export</span>
+          </button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

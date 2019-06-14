@@ -18,7 +18,9 @@ import {
   MatSortModule,
   MatSelectModule,
   MatStepperModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatBottomSheetModule,
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +36,10 @@ import { IaDesignTripComponent } from './ia-design-trip/ia-design-trip.component
 import { IaTripService } from './shared/services/ia-trip.service';
 import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { IaViewRevisedComponent } from './ia-view-revised/ia-view-revised.component';
+import { IaOverviewComponent } from './ia-overview/ia-overview.component';
+import { FormConfirmDialogComponent } from './shared/components/form-confirm-dialog/form-confirm-dialog.component';
+import { FormConfirmModalComponent } from './shared/components/form-confirm-modal/form-confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,11 @@ import { MaterialModule } from './shared/modules/material/material.module';
     IaNewTripComponent,
     IaEditTripComponent,
     IaDesignTripComponent,
-    IaViewTripComponent
+    IaViewTripComponent,
+    IaViewRevisedComponent,
+    IaOverviewComponent,
+    FormConfirmDialogComponent,
+    FormConfirmModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,9 +77,18 @@ import { MaterialModule } from './shared/modules/material/material.module';
     MatSortModule,
     MatSelectModule,
     MatStepperModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatBottomSheetModule
   ],
-  providers: [IaNavigationService, IaTripService],
+  providers: [
+    IaNavigationService,
+    IaTripService,
+  ],
+  entryComponents: [
+    FormConfirmDialogComponent,
+    FormConfirmModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

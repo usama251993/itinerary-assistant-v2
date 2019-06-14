@@ -1,0 +1,23 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.confirm-dialog-holder {
+  justify-content: center;
+
+  div.message-holder {
+    padding: 1rem;
+    font-size: 1.25rem;
+  }
+
+  div.button-holder {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    div.button {
+      margin: 1rem;
+    }
+  }
+}

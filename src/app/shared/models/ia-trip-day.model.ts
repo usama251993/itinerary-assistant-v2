@@ -7,7 +7,7 @@ export class IaTripDayModel {
   constructor(public day: {
     isTerminalDay?: boolean,
     places: IaTripPlaceModel[],
-    transit: IaTripTransitModel[]
+    transit?: IaTripTransitModel[]
   }) { }
 
 }

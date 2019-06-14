@@ -1,0 +1,28 @@
+{
+  "tripInit": {
+    "startDate": "2019-06-13T18:30:00.000Z",
+    "sourceCity": "Mumbai"
+  },
+  "days": [
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Thane",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "One",
+                    "description": ""
+                  }
+                }
+              ],
+              "stays": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource, MatSnackBar, MatBottomSheet, MatBottomSheetRef, MatDialogRef, MatDialog } from '@angular/material';
+
 import { IaTripService } from '../shared/services/ia-trip.service';
 import { IaTripModel } from '../shared/models/ia-trip.model';
-import { MatTableDataSource } from '@angular/material';
+import { FormConfirmDialogComponent } from '../shared/components/form-confirm-dialog/form-confirm-dialog.component';
+import { FormConfirmModalComponent } from '../shared/components/form-confirm-modal/form-confirm-modal.component';
 
 @Component({
   selector: 'app-ia-trip',
@@ -26,18 +29,17 @@ export class IaNewTripComponent implements OnInit {
   emptyRoomData: { type: string, cost: number }[] = [{ type: "", cost: 0 }];
   dataSource: MatTableDataSource<{ type: string, cost: number }> = new MatTableDataSource(this.emptyRoomData);
   roomOptions: { optionText: string, optionValue: string }[] = [];
-  displayedColumns: string[] = ["type", "cost", "actions"];
 
-  stepperControlGroupOne: FormGroup = this.formBuilder.group({
-    sourceCity: ["", [Validators.required]],
-    startDate: ["", [Validators.required]]
-  });
-  stepperControlGroupTwo: FormGroup = this.formBuilder.group({});
+  deleteDialogRef: MatBottomSheetRef = null;
+  deleteModalRef: MatDialogRef<FormConfirmModalComponent> = null;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private tripService: IaTripService) { }
+    private tripService: IaTripService,
+    private formSnackBar: MatSnackBar,
+    private formConfirmDialog: MatBottomSheet,
+    private formConfirmModal: MatDialog) { }
 
   ngOnInit(): void {
     this.newTripForm = this.formBuilder.group({
@@ -50,15 +52,17 @@ export class IaNewTripComponent implements OnInit {
       })
     });
     this.roomOptions = this.tripService.roomOptions;
-    console.log(this.newTripForm.get("trip"));
   }
 
   initializeDaysArray() {
-    return this.formBuilder.group({
+    let dayFormGroup = this.formBuilder.group({
       places: this.formBuilder.array([
         this.initializePlacesArray()
       ])
     });
+    dayFormGroup.markAsPristine();
+    dayFormGroup.markAsUntouched();
+    return dayFormGroup;
   }
 
   addNewDay() {
@@ -67,8 +71,32 @@ export class IaNewTripComponent implements OnInit {
       .push(this.initializeDaysArray());
   }
 
+  deleteDay(dayIndex: number) {
+    // for MatBottomSheet
+    // this.deleteDialogRef = this.formConfirmDialog.open(FormConfirmDialogComponent);
+    // this.deleteDialogRef.afterDismissed().subscribe((result) => {
+    //   if (result) {
+    //     (this.newTripForm.get("trip").get("days") as FormArray).removeAt(dayIndex);
+    //     this.formSnackBar.open("Day deleted", "DISMISS", { duration: 2500 });
+    //   } else {
+    //     this.deleteDialogRef = null;
+    //   }
+    // });
+
+    // for MatDialog
+    this.deleteModalRef = this.formConfirmModal.open(FormConfirmModalComponent);
+    this.deleteModalRef.afterClosed().subscribe((result) => {
+      if (result) {
+        (this.newTripForm.get("trip").get("days") as FormArray).removeAt(dayIndex);
+        this.formSnackBar.open("Day deleted", "DISMISS", { duration: 2500 });
+      } else {
+        this.deleteModalRef = null;
+      }
+    });
+  }
+
   initializePlacesArray() {
-    return this.formBuilder.group({
+    let placeFormGroup = this.formBuilder.group({
       name: ["", [Validators.required]],
       attractions: this.formBuilder.array([
         this.initializeAttractionsArray()
@@ -76,7 +104,10 @@ export class IaNewTripComponent implements OnInit {
       stays: this.formBuilder.array([
         this.initializeStaysArray()
       ])
-    })
+    });
+    placeFormGroup.markAsPristine();
+    placeFormGroup.markAsUntouched();
+    return placeFormGroup;
   }
 
   addNewPlace(dayIndex: number) {
@@ -86,11 +117,43 @@ export class IaNewTripComponent implements OnInit {
       .push(this.initializePlacesArray());
   }
 
+  deletePlace(dayIndex: number, placeIndex: number) {
+    // for MatBottomSheet
+    // this.deleteDialogRef = this.formConfirmDialog.open(FormConfirmDialogComponent);
+    // this.deleteDialogRef.afterDismissed().subscribe((result) => {
+    //   if (result) {
+    //     ((this.newTripForm.get("trip")
+    //       .get("days") as FormArray).controls[dayIndex]
+    //       .get("places") as FormArray).removeAt(placeIndex);
+    //     this.formSnackBar.open("Place deleted", "DISMISS", { duration: 2500 });
+    //   } else {
+    //     this.deleteDialogRef = null;
+    //   }
+    // });
+
+    // for MatDialog
+    this.deleteModalRef = this.formConfirmModal.open(FormConfirmModalComponent);
+    this.deleteModalRef.afterClosed().subscribe((result) => {
+      if (result) {
+        ((this.newTripForm.get("trip")
+          .get("days") as FormArray).controls[dayIndex]
+          .get("places") as FormArray).removeAt(placeIndex);
+        this.formSnackBar.open("Place deleted", "DISMISS", { duration: 2500 });
+      } else {
+        this.deleteModalRef = null;
+      }
+    })
+
+  }
+
   initializeAttractionsArray() {
-    return this.formBuilder.group({
+    let attractionFormGroup = this.formBuilder.group({
       name: ["", [Validators.required]],
       description: [""]
     })
+    attractionFormGroup.markAsPristine();
+    attractionFormGroup.markAsUntouched();
+    return attractionFormGroup;
   }
 
   addNewAttraction(dayIndex: number, placeIndex: number) {
@@ -101,15 +164,48 @@ export class IaNewTripComponent implements OnInit {
       .push(this.initializeAttractionsArray());
   }
 
+  deleteAttraction(dayIndex: number, placeIndex: number, attractionIndex: number) {
+    // for MatBottomSheet
+    // this.deleteDialogRef = this.formConfirmDialog.open(FormConfirmDialogComponent);
+    // this.deleteDialogRef.afterDismissed().subscribe((result) => {
+    //   if (result) {
+    //     (((this.newTripForm.get("trip")
+    //       .get("days") as FormArray).controls[dayIndex]
+    //       .get("places") as FormArray).controls[placeIndex]
+    //       .get("attractions") as FormArray).removeAt(attractionIndex);
+    //     this.formSnackBar.open("Attraction deleted", "DISMISS", { duration: 2500 });
+    //   } else {
+    //     this.deleteDialogRef = null;
+    //   }
+    // });
+
+    // for MatDialog
+    this.deleteModalRef = this.formConfirmModal.open(FormConfirmModalComponent);
+    this.deleteModalRef.afterClosed().subscribe((result) => {
+      if (result) {
+        (((this.newTripForm.get("trip")
+          .get("days") as FormArray).controls[dayIndex]
+          .get("places") as FormArray).controls[placeIndex]
+          .get("attractions") as FormArray).removeAt(attractionIndex);
+        this.formSnackBar.open("Attraction deleted", "DISMISS", { duration: 2500 });
+      } else {
+        this.deleteModalRef = null;
+      }
+    });
+  }
+
   initializeStaysArray() {
-    return this.formBuilder.group({
+    let stayFormGroup = this.formBuilder.group({
       name: ["", [Validators.required]],
       address: [""],
       contact: [""],
       rooms: this.formBuilder.array([
         this.initializeRoomsArray()
       ])
-    })
+    });
+    stayFormGroup.markAsPristine();
+    stayFormGroup.markAsUntouched();
+    return stayFormGroup;
   }
 
   addNewStay(dayIndex: number, placeIndex: number) {
@@ -120,11 +216,44 @@ export class IaNewTripComponent implements OnInit {
       .push(this.initializeStaysArray());
   }
 
+  deleteStay(dayIndex: number, placeIndex: number, stayIndex: number) {
+    // for MatBottomSheet
+    // this.deleteDialogRef = this.formConfirmDialog.open(FormConfirmDialogComponent);
+    // this.deleteDialogRef.afterDismissed().subscribe((result) => {
+    //   if (result) {
+    //     (((this.newTripForm.get("trip")
+    //       .get("days") as FormArray).controls[dayIndex]
+    //       .get("places") as FormArray).controls[placeIndex]
+    //       .get("stays") as FormArray).removeAt(stayIndex);
+    //     this.formSnackBar.open("Stay deleted", "DISMISS", { duration: 2500 });
+    //   } else {
+    //     this.deleteDialogRef = null;
+    //   }
+    // });
+
+    // for MatDialog
+    this.deleteModalRef = this.formConfirmModal.open(FormConfirmModalComponent);
+    this.deleteModalRef.afterClosed().subscribe((result) => {
+      if (result) {
+        (((this.newTripForm.get("trip")
+          .get("days") as FormArray).controls[dayIndex]
+          .get("places") as FormArray).controls[placeIndex]
+          .get("stays") as FormArray).removeAt(stayIndex);
+        this.formSnackBar.open("Stay deleted", "DISMISS", { duration: 2500 });
+      } else {
+        this.deleteModalRef = null;
+      }
+    });
+  }
+
   initializeRoomsArray() {
-    return this.formBuilder.group({
+    let roomFormGroup = this.formBuilder.group({
       type: [""],
       cost: ["", [Validators.required]]
-    })
+    });
+    roomFormGroup.markAsPristine();
+    roomFormGroup.markAsUntouched();
+    return roomFormGroup;
   }
 
   addNewRoom(dayIndex: number, placeIndex: number, stayIndex: number) {
@@ -142,28 +271,17 @@ export class IaNewTripComponent implements OnInit {
       .get("places") as FormArray).controls[placeIndex]
       .get("stays") as FormArray).controls[stayIndex]
       .get("rooms") as FormArray).removeAt(roomIndex);
+    this.formSnackBar.open("Room deleted", "DISMISS", { duration: 2000 });
   }
-
-  // sendToNextStep(sourceCity: FormControl, startDate: FormControl): void {
-  //   this.newTripObject = {
-  //     trip: {
-  //       id: Math.round(Math.random() * 10000),
-  //       title: sourceCity.value,
-  //       sourceCity: sourceCity.value,
-  //       startDate: (startDate.value as Date),
-  //       isOneDayTrip: false,
-  //       days: []
-  //     }
-  //   }
-  // }
 
   clearInput(control: FormControl): void {
     control.setValue("");
   }
 
   formSubmit(): void {
-    this.router.navigate(["../" + "view"], { relativeTo: this.route });
-    this.tripService.initNewTrip(this.newTripForm.value);
+    // this.router.navigate(["../" + "view"], { relativeTo: this.route });
+    this.tripService.createNewTrip(this.newTripForm.get("trip").value);
+    this.router.navigate(["../" + "view-revised"], { relativeTo: this.route });
   }
 
 }

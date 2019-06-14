@@ -17,7 +17,20 @@ mat-card.master-card {
       font-size: 1rem;
     }
 
+    div.trip-detail {
+      margin: 0.5rem 0rem;
+    }
+
     mat-horizontal-stepper {
+      /deep/ {
+        div.mat-horizontal-stepper-header-container {
+          justify-content: center;
+        }
+        div.mat-horizontal-content-container {
+          padding: 0rem 1rem;
+        }
+      }
+
       div.button-holder {
         justify-content: flex-end;
         align-items: flex-end;
@@ -34,21 +47,39 @@ mat-card.master-card {
           }
         }
       }
+    }
 
-      // table.mat-table {
-      //   th,
-      //   td {
-      //     padding: 0.5rem;
-      //   }
-      // }
+    div.day-title-holder,
+    div.place-title-holder,
+    div.attraction-card-title-holder,
+    div.stay-card-title-holder {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.25rem;
     }
 
     mat-card.attraction-card {
       margin: 0.5rem;
+      /deep/ {
+        div.mat-card-header-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+      }
     }
 
-    mat-card.hotel-card {
+    mat-card.stay-card {
       margin: 0.5rem;
+
+      /deep/ {
+        div.mat-card-header-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+      }
 
       mat-list-item {
         height: unset;

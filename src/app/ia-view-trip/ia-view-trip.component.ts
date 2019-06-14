@@ -20,13 +20,12 @@ export class IaViewTripComponent implements OnInit {
   trips: IaTripModel[] = []
 
   displayedColumns: string[] = ["type", "cost"];
-  // dataSource;
 
   constructor(private tripService: IaTripService) { }
 
   ngOnInit(): void {
     this.trips = this.tripService.trips;
-    // this.displayedColumns
+    console.log(this.trips);
   }
 
 }

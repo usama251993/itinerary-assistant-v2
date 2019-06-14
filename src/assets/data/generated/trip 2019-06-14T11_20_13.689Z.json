@@ -1,0 +1,940 @@
+{
+  "tripInit": {
+    "startDate": "2019-06-13T18:30:00.000Z",
+    "sourceCity": "Mumbai"
+  },
+  "days": [
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Guwahati",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Kamakhya Temple",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Botanical Garden",
+                    "description": "Casual"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "State Museum",
+                    "description": "Federal Property"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Umananda Island",
+                    "description": "Temple at the heart of Island"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Guwahati Planetarium",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Nehru Park",
+                    "description": "Stadium"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Saraighat Bridge",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Guwahati War Cemetery",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Fancy Bazaar",
+                    "description": "Market"
+                  }
+                }
+              ],
+              "stays": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Bhalukpong",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Pakka Tiger Reserve",
+                    "description": "Sanctuary"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Kameng River",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Litchi Farm",
+                    "description": "Agriculture"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Prashanti Lodge",
+                    "address": "2J7W+3V Bhalukpong, Arunachal Pradesh",
+                    "contact": "099570 81781",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Solu",
+                    "address": "2J6W+6F Bhalukpong, Arunachal Pradesh",
+                    "contact": "+(91)-3780-234955",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Nameri Eco Camp",
+                    "address": "WRFG+PX Potasali, Assam",
+                    "contact": "03714 292 644",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Kameng Inn",
+                    "address": "2J8Q+5Q Bhalukpong, Arunachal Pradesh",
+                    "contact": "03782 234 865",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "place": {
+              "name": "Bomdila",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Lower Gompa",
+                    "description": "Shrine"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Bomdila Monastery",
+                    "description": "Monastery"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Market",
+                    "description": "Market"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Chillipam Gompa",
+                    "description": "Shrine"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Hotel Elysium",
+                    "address": "7C8C+M4 Bomdila, Arunachal Pradesh",
+                    "contact": "094020 71827",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Tourist Lodge",
+                    "address": "",
+                    "contact": "",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Holiday Hills Homestay",
+                    "address": "7C7G+Q7 Bomdila, Arunachal Pradesh",
+                    "contact": "",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "La",
+                    "address": "7C7F+M6 Bomdila, Arunachal Pradesh",
+                    "contact": "03782 223 344",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Norgay Guest House",
+                    "address": "7C7C+98 Bomdila, Arunachal Pradesh",
+                    "contact": "076299 54548",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Siphiyang Phong",
+                    "address": "",
+                    "contact": "03782 222 286",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Dhe Dhen Gakhyil Guest House",
+                    "address": "",
+                    "contact": "03782 223 232",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Tsepal Yangjom",
+                    "address": "7C7C+86 Bomdila, Arunachal Pradesh",
+                    "contact": "03782 223 674",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "place": {
+              "name": "Dirang",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Sangit Valley",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Thupsung Dhargye Monastery",
+                    "description": "Monastery"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Lopon Stadium",
+                    "description": "Stadium"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Hot Water Spring",
+                    "description": "Unique"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Hotel Samdup Khang",
+                    "address": "963V+PW Dirang, Arunachal Pradesh",
+                    "contact": "094028 69201",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 1646
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Pemaling",
+                    "address": "9722+P2 Dirang, Arunachal Pradesh",
+                    "contact": "082589 19962",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Awoo Resort",
+                    "address": "962X+W2 Dirang, Arunachal Pradesh",
+                    "contact": "098629 41109",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Tawang",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Tawang Monastery",
+                    "description": "Shrine"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Tawang War Memorial",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Giant Buddha Statue",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Jung Nurarang Falls",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Geshita Peak",
+                    "description": "Mountain"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Sela Pass",
+                    "description": "On the way from Bomdilla to Tawang"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Circuit House",
+                    "address": "HVWC+JV Tawang, Arunachal Pradesh",
+                    "contact": "094360 97999",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "The Shangri-La Serene",
+                    "address": "HVR7+QW Tawang, Arunachal Pradesh",
+                    "contact": "",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Tawang Holiday",
+                    "address": "HVW9+3P Tawang, Arunachal Pradesh",
+                    "contact": "087945 54003",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 2184
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "place": {
+              "name": "Bhalukpong",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Nameri Sanctuary",
+                    "description": "Sanctuary"
+                  }
+                }
+              ],
+              "stays": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Itanagar",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Itanagar Gompa",
+                    "description": "Shrine"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Ita Fort",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "State Museum",
+                    "description": "Federal Property"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Ganga Lake",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Itanagar Science Center",
+                    "description": "Attraction"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Online City Park",
+                    "description": "Garden"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Hotel Arunachal",
+                    "address": "4M4V+P5 Naharlagun, Arunachal Pradesh",
+                    "contact": "0360 224 4960",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Donyi Polo Ashok",
+                    "address": "3JWM+98 Itanagar, Arunachal Pradesh",
+                    "contact": "0360 221 2626",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hote Itafort",
+                    "address": "3JXG+XJ Itanagar, Arunachal Pradesh",
+                    "contact": "0360 221 2806",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 5150
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Ziro",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Ziro Point",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Talley Valley Sanctuary",
+                    "description": "Wildlife"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Tarin Fish Farm",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Dolo Mando",
+                    "description": "Sightseeing"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Hotel Pine Ridge",
+                    "address": "3JQ6+3G Itanagar, Arunachal Pradesh",
+                    "contact": "",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Siiro Resort",
+                    "address": "GRFM+PJ Ziro, Arunachal Pradesh",
+                    "contact": "03788 225 123",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Hotel Blue Pine",
+                    "address": "GRV5+63 Ziro, Arunachal Pradesh",
+                    "contact": "03788 224 812",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Passa Lath Resort",
+                    "address": "7MVMHR7H+2V",
+                    "contact": "085757 59112",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Majuli",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Island Tour",
+                    "description": "Half day voyage"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Risong Guest house",
+                    "address": "X5M3+QF Natun Kulamora Chapori N.C., Assam",
+                    "contact": "095087 90587",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 900
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "La Maison de Ananda",
+                    "address": "X5M3+MJ Natun Kulamora Chapori N.C., Assam",
+                    "contact": "099571 86356",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 1600
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Dekasang Majuli",
+                    "address": "X5R3+H5 மஜுலி, Assam",
+                    "contact": "098547 15435",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Kaziranga",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Hoollongapar Gibbon Sanctuary",
+                    "description": "Wildlife"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Tea Research Center",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Jorhat Science Center",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Lachit Borphukan's Maidam",
+                    "description": "Garden"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Diphlu River Lodge",
+                    "address": "H7J9+CV Kuthari, Assam",
+                    "contact": "0361 266 7871",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Camp Rhino Resort",
+                    "address": "H5FP+5X Kakhin Deopani N.C., Assam",
+                    "contact": "094350 60372",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Landmark Woods",
+                    "address": "H59P+3J Kakhin Deopani N.C., Assam",
+                    "contact": "070860 51677",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 5891
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Green Village Resort",
+                    "address": "H29V+2V Deusur Sang, Assam",
+                    "contact": "070029 34945",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 4050
+                        }
+                      },
+                      {
+                        "room": {
+                          "type": "multiple",
+                          "cost": 5851
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Haflong",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Haflong Lake",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Samparidisa Village",
+                    "description": "Village by the town"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Disgao Lodge",
+                    "address": "52C6+CF Haflong, Assam",
+                    "contact": "099572 90863",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 7000
+                        }
+                      },
+                      {
+                        "room": {
+                          "type": "multiple",
+                          "cost": 999
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "The Landmark Hotel",
+                    "address": "5278+QQ Haflong, Assam",
+                    "contact": "03673 239 009",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Nhoshring Guest House",
+                    "address": "52C6+9R Haflong, Assam",
+                    "contact": "096788 43907",
+                    "rooms": [
+                      {
+                        "room": {
+                          "type": "double",
+                          "cost": 1960
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "place": {
+              "name": "Krang Shuri",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Krang Shuri Waterfall",
+                    "description": "Nature"
+                  }
+                }
+              ],
+              "stays": []
+            }
+          },
+          {
+            "place": {
+              "name": "Dawki",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Jaflong Zero Point",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Boating",
+                    "description": "Lifestyle"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Dawki River",
+                    "description": "Sightseeing"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Friendship Gate",
+                    "description": "Monument"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Songrampunji Waterfall",
+                    "description": "Nature"
+                  }
+                }
+              ],
+              "stays": []
+            }
+          },
+          {
+            "place": {
+              "name": "Mawlynnong",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Root Bridge",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Balancing Rock",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Mawlynnong Village",
+                    "description": "The cleanest village in India"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Ha La Rympei Home Stay And Tea Stall",
+                    "address": "6W27+XW Mawlynnong, Meghalaya",
+                    "contact": "070059 75966",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Meghalaya Village Mawlynnong Bamboo Cottage",
+                    "address": "6W28+J7 Mawlynnong, Meghalaya",
+                    "contact": "086522 25785",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "name": "Shnongpdeng",
+              "attractions": [
+                {
+                  "attraction": {
+                    "name": "Byrdaw Falls",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Wah Umngot",
+                    "description": "Nature"
+                  }
+                },
+                {
+                  "attraction": {
+                    "name": "Mawshun Caves",
+                    "description": "Spelunking"
+                  }
+                }
+              ],
+              "stays": [
+                {
+                  "stay": {
+                    "name": "Shnongpdeng Camping",
+                    "address": "6245+PH Shnongpdeng, Meghalaya",
+                    "contact": "070055 03922",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Kenny/pacify Camping Tents",
+                    "address": "6245+VR Shnongpdeng, Meghalaya",
+                    "contact": "088370 58317",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Riverside Camping Tent",
+                    "address": "6245+W3 Shnongpdeng, Meghalaya",
+                    "contact": "088370 58317",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Marvel’s Camps",
+                    "address": "6254+FP Shnongpdeng, Meghalaya",
+                    "contact": "070858 71825",
+                    "rooms": []
+                  }
+                },
+                {
+                  "stay": {
+                    "name": "Gawooh Adventure",
+                    "address": "6244+M7 Shnongpdeng, Meghalaya",
+                    "contact": "087875 68561",
+                    "rooms": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
