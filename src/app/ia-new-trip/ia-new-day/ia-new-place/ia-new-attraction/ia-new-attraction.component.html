@@ -4,7 +4,12 @@
       <mat-card-title>
         <div class="attraction-card-title-holder">
           <div class="attraction-card-title">
-            <span>Add attraction details</span>
+            <!-- <span>Add attraction details</span> -->
+            <span *ngIf="attractionFormGroup.get('name').value; else defaultAttraction">Edit details
+              for {{ attractionFormGroup.get('name').value }}</span>
+            <ng-template #defaultAttraction>
+              <span>Add Attraction details</span>
+            </ng-template>
           </div>
           <div class="button-holder">
             <div class="button">

@@ -10,7 +10,8 @@
       </ng-template>
       <div class="step-detail-holder">
         <app-ia-new-place [placeFormGroup]="dayFormGroup.get('places').controls[placeIndex]"
-          [placeIndex]="{ day: dayIndex.day, place: placeIndex }"></app-ia-new-place>
+          [placeIndex]="{ day: dayIndex.day, place: placeIndex }" [placesLength]="dayFormGroup.get('places').length">
+        </app-ia-new-place>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatStepper } from '@angular/material';
+import { MatStepper, MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { IaTripFormBuilderService } from '../shared/services/ia-trip/ia-trip-form-builder.service';
 import { IaTripService } from '../shared/services/ia-trip.service';
+import { Observable } from 'rxjs';
+import { FormConfirmModalComponent } from '../shared/components/form-confirm-modal/form-confirm-modal.component';
 
 @Component({
   selector: 'app-ia-trip',
@@ -18,13 +20,15 @@ export class IaNewTripComponent implements OnInit {
   newTrip: {} = { tripStart: { sourceCity: "", startDate: new Date(Date.now()) }, days: [] };
   today: Date;
   dateOptions: {} = {};
-
+  deactivateModalRef: MatDialogRef<FormConfirmModalComponent> = null;
+  canReturn: boolean = false;
   editFlag: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private tripFormBuilder: IaTripFormBuilderService,
-    private tripService: IaTripService) { }
+    private tripService: IaTripService,
+    private formConfirmModal: MatDialog) { }
 
   ngOnInit(): void {
     this.editFlag = this.tripService.editFlag;
@@ -60,9 +64,7 @@ export class IaNewTripComponent implements OnInit {
     this.tripService.editFlag = false;
     this.tripService.newTrip = this.newTrip;
     this.tripService.createNewTrip(this.cleanForm(this.tripForm.value));
-    console.log(this.tripForm.value);
-
-    // this.router.navigate(["../" + "view"], { relativeTo: this.route });
+    this.router.navigate(["../" + "view"], { relativeTo: this.route });
   }
 
   cleanForm(formData: FormData) {
@@ -76,6 +78,25 @@ export class IaNewTripComponent implements OnInit {
       }
     });
     return formData;
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    // // let canReturn: boolean = false;
+    // if (this.tripForm.dirty) {
+    //   this.deactivateModalRef = this.formConfirmModal.open(FormConfirmModalComponent);
+    //   this.deactivateModalRef.afterClosed().subscribe((result) => {
+    //     if (result) {
+    //       this.canReturn = true
+    //     } else {
+    //       this.deactivateModalRef = null;
+    //       this.canReturn = false;
+    //     }
+    //   });
+    // }
+    // // canReturn = true;
+    // console.log(this.canReturn);
+    // return this.canReturn;
+    return true;
   }
 
 }

@@ -11,6 +11,7 @@ export class IaNewPlaceComponent implements OnInit {
 
   @Input("placeFormGroup") placeFormGroup: FormGroup;
   @Input("placeIndex") placeIndex: { day: number, place: number };
+  @Input("placesLength") placesLength: number;
 
   constructor(private tripFormBuilder: IaTripFormBuilderService) { }
 

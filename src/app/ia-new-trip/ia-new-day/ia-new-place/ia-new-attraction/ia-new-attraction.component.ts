@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { IaTripFormBuilderService } from 'src/app/shared/services/ia-trip/ia-trip-form-builder.service';
 
 @Component({
@@ -18,6 +18,10 @@ export class IaNewAttractionComponent implements OnInit {
 
   deleteAttraction(indexObject: { day: number, place: number, attraction: number }): void {
     this.tripFormBuilder.deleteAttraction(indexObject.day, indexObject.place, indexObject.attraction);
+  }
+
+  clearInput(control: FormControl) {
+    control.setValue("");
   }
 
 }

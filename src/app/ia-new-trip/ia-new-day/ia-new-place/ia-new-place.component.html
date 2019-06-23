@@ -1,12 +1,22 @@
 <form action="javascript:void(0)" [formGroup]="placeFormGroup">
-  <div class="place-title-holder">
-    <div class="place-title">
+  <div class="trip-entity-title-holder">
+    <div class="trip-entity-title">
       <span>Add place details</span>
     </div>
     <div class="button-holder">
+      <div class="button" *ngIf="placeIndex.place !== 0">
+        <button mat-raised-button mat-icon-button matStepperPrevious matTooltip="Previous Place">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+      </div>
       <div class="button">
         <button mat-raised-button mat-icon-button tabindex="0" (click)="deletePlace(placeIndex)">
           <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div class="button" *ngIf="placeIndex.place !== placesLength - 1">
+        <button mat-raised-button mat-icon-button matStepperNext matTooltip="Next Place">
+          <mat-icon>chevron_right</mat-icon>
         </button>
       </div>
     </div>
@@ -31,16 +41,29 @@
         <span>Attractions</span>
       </ng-template>
       <div class="step-detail-holder">
-        <div class="attraction-detail-holder"
-          *ngFor="let attraction of placeFormGroup.get('attractions').controls; let attractionIndex = index;">
-          <ng-container formArrayName="attractions">
-            <div class="attraction-card-holder">
-              <app-ia-new-attraction [attractionFormGroup]="placeFormGroup.get('attractions').controls[attractionIndex]"
-                [attractionIndex]="{ day: placeIndex.day, place: placeIndex.place, attraction: attractionIndex }">
-              </app-ia-new-attraction>
+        <mat-accordion>
+          <mat-expansion-panel
+            *ngFor="let attraction of placeFormGroup.get('attractions').controls; let attractionIndex = index;"
+            [expanded]="attractionIndex === 0 ? 'true' : 'false'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span
+                  *ngIf="placeFormGroup.get('attractions').controls[attractionIndex].get('name').value; else defaultAttraction">{{ placeFormGroup.get('attractions').controls[attractionIndex].get('name').value }}</span>
+                <ng-template #defaultAttraction>
+                  <span>Attraction {{ attractionIndex + 1 }}</span>
+                </ng-template>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="mat-expansion-content">
+              <ng-container formArrayName="attractions">
+                <app-ia-new-attraction
+                  [attractionFormGroup]="placeFormGroup.get('attractions').controls[attractionIndex]"
+                  [attractionIndex]="{ day: placeIndex.day, place: placeIndex.place, attraction: attractionIndex }">
+                </app-ia-new-attraction>
+              </ng-container>
             </div>
-          </ng-container>
-        </div>
+          </mat-expansion-panel>
+        </mat-accordion>
         <div class="button-holder">
           <div class="button">
             <button mat-raised-button color="primary" type="button" (click)="addNewAttraction(placeIndex)">
@@ -53,14 +76,27 @@
     <mat-step>
       <ng-template matStepLabel><span>Stays</span></ng-template>
       <div class="step-detail-holder">
-        <div class="stay-detail-holder"
-          *ngFor="let stay of placeFormGroup.get('stays').controls; let stayIndex = index;">
-          <div class="stay-card-holder" formArrayName="stays">
-            <app-ia-new-stay [stayFormGroup]="placeFormGroup.get('stays').controls[stayIndex]"
-              [stayIndex]="{ day: placeIndex.day, place: placeIndex.place, stay: stayIndex }">
-            </app-ia-new-stay>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let stay of placeFormGroup.get('stays').controls; let stayIndex = index;"
+            [expanded]="stayIndex === 0 ? 'true' : 'false'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span
+                  *ngIf="placeFormGroup.get('stays').controls[stayIndex].get('name').value; else defaultStay">{{ placeFormGroup.get('stays').controls[stayIndex].get('name').value }}</span>
+                <ng-template #defaultStay>
+                  <span>Stay {{ stayIndex + 1 }}</span>
+                </ng-template>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="mat-expansion-content">
+              <ng-container formArrayName="stays">
+                <app-ia-new-stay [stayFormGroup]="placeFormGroup.get('stays').controls[stayIndex]"
+                  [stayIndex]="{ day: placeIndex.day, place: placeIndex.place, stay: stayIndex }">
+                </app-ia-new-stay>
+              </ng-container>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
         <div class="button-holder">
           <div class="button">
             <button mat-raised-button color="primary" type="button" (click)="addNewStay(placeIndex)">

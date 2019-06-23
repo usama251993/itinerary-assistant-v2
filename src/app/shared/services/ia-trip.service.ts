@@ -285,10 +285,7 @@ export class IaTripService {
 
   customSetValue(inputFormGroup: FormGroup, inputFormData: FormData) {
     inputFormGroup = this.tripFormBuilder.buildFormGroup(inputFormGroup, inputFormData);
-    inputFormGroup.patchValue({
-      tripStart: inputFormData["tripStart"],
-      days: inputFormData["days"]
-    });
+    inputFormGroup.patchValue(inputFormData);
   }
 }
 

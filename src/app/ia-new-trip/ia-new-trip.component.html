@@ -92,14 +92,24 @@
                           <span>{{ getCurrentDate(tripForm.get('tripStart').get('startDate').value, dayIndex) }}</span>
                         </ng-template>
                         <div class="step-detail-holder">
-                          <div class="day-title-holder">
-                            <div class="day-title">
+                          <div class="trip-entity-title-holder">
+                            <div class="trip-entity-title">
                               <span>Day {{ dayIndex + 1 }} details</span>
                             </div>
                             <div class="button-holder">
+                              <div class="button" *ngIf="dayIndex !== 0">
+                                <button mat-raised-button mat-icon-button matStepperPrevious matTooltip="Previous Day">
+                                  <mat-icon>chevron_left</mat-icon>
+                                </button>
+                              </div>
                               <div class="button">
                                 <button mat-raised-button mat-icon-button (click)="deleteDay(dayIndex)">
                                   <mat-icon>delete</mat-icon>
+                                </button>
+                              </div>
+                              <div class="button" *ngIf="dayIndex !== tripForm.get('days').controls.length - 1">
+                                <button mat-raised-button mat-icon-button matStepperNext matTooltip="Next Day">
+                                  <mat-icon>chevron_right</mat-icon>
                                 </button>
                               </div>
                             </div>

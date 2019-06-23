@@ -382,9 +382,6 @@ export class IaTripFormBuilderService {
       });
     })
 
-
-    console.log(inputFormGroup);
-
     return inputFormGroup;
   }
 

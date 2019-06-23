@@ -21,6 +21,7 @@ import {
   MatSlideToggleModule,
   MatSnackBarModule,
   MatBottomSheetModule,
+  MatTooltipModule,
 } from '@angular/material';
 // import { MatFileUploadModule } from 'angular-material-fileupload';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -50,6 +51,7 @@ import { IaNewRoomComponent } from './ia-new-trip/ia-new-day/ia-new-place/ia-new
 import { HttpClientModule } from '@angular/common/http';
 import { TripResolverService } from './shared/services/resolver/trip-resolver.service';
 import { IaLoadTripFormComponent } from './ia-load-trip-form/ia-load-trip-form.component';
+import { CanDeactivateGuardService } from './shared/services/guard/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -98,12 +100,14 @@ import { IaLoadTripFormComponent } from './ia-load-trip-form/ia-load-trip-form.c
     MatSnackBarModule,
     MatBottomSheetModule,
     // MatFileUploadModule
+    MatTooltipModule
   ],
   providers: [
     IaNavigationService,
     IaTripService,
     { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true } },
-    TripResolverService
+    TripResolverService,
+    CanDeactivateGuardService
   ],
   entryComponents: [
     FormConfirmDialogComponent,

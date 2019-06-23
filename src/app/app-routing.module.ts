@@ -8,11 +8,12 @@ import { IaViewTripComponent } from './ia-view-trip/ia-view-trip.component';
 import { IaViewRevisedComponent } from './ia-view-revised/ia-view-revised.component';
 import { TripResolverService } from './shared/services/resolver/trip-resolver.service';
 import { IaLoadTripFormComponent } from './ia-load-trip-form/ia-load-trip-form.component';
+import { CanDeactivateGuardService } from './shared/services/guard/can-deactivate-guard.service';
 
 const routes: Routes = [
   { path: "home", component: IaHomeComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "new", component: IaNewTripComponent },
+  { path: "new", component: IaNewTripComponent, canDeactivate: [CanDeactivateGuardService] },
   { path: "load", component: IaLoadTripFormComponent },
   { path: "edit", component: IaEditTripComponent },
   { path: "design", component: IaDesignTripComponent },

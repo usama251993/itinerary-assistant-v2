@@ -17,11 +17,17 @@ mat-vertical-stepper {
   }
 }
 
-div.place-title-holder {
+div.trip-entity-title-holder {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   font-size: 1.25rem;
+
+  div.button-holder {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 div.button-holder {

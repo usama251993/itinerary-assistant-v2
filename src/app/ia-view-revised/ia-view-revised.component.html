@@ -73,7 +73,7 @@
                                 <span>No Attractions entered for {{ singlePlace.name }}</span>
                               </div>
                               <ng-template #attractionCards>
-                                <div class="attraction-card-holder">
+                                <!-- <div class="attraction-card-holder">
                                   <mat-card class="attraction-card"
                                     *ngFor="let singleAttraction of singlePlace.attractions; let attractionIndex = index;">
                                     <mat-card-header>
@@ -90,7 +90,37 @@
                                     <mat-card-actions>
                                     </mat-card-actions>
                                   </mat-card>
-                                </div>
+                                </div> -->
+                                <mat-accordion>
+                                  <mat-expansion-panel
+                                    *ngFor="let singleAttraction of singlePlace.attractions; let attractionIndex = index;">
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        <span>{{ singleAttraction.name }}</span>
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="mat-expansion-content">
+                                      <div class="content">
+                                        <span
+                                          *ngIf="singleAttraction.location; else noAttractionLocation">{{ singleAttraction.location }}</span>
+                                        <ng-template #noAttractionLocation>
+                                          <div class="no-trip-entity-message">
+                                            <span>Location Plus Code not available</span>
+                                          </div>
+                                        </ng-template>
+                                      </div>
+                                      <div class="content">
+                                        <span
+                                          *ngIf="singleAttraction.description; else noSttractionDescription">{{ singleAttraction.description }}</span>
+                                        <ng-template #noAttractionDescription>
+                                          <div class="no-trip-entity-message">
+                                            <span>Description not available</span>
+                                          </div>
+                                        </ng-template>
+                                      </div>
+                                    </div>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
                               </ng-template>
                             </div>
                           </mat-step>
@@ -102,58 +132,69 @@
                                 <span>No Stays entered for {{ singlePlace.name }}</span>
                               </div>
                               <ng-template #stayCards>
-                                <div class="stay-card-holder">
-                                  <mat-card class="stay-card"
+                                <mat-accordion>
+                                  <mat-expansion-panel
                                     *ngFor="let singleStay of singlePlace.stays; let stayIndex = index;">
-                                    <mat-card-header>
-                                      <mat-card-title>
-                                        <div class="stay-name">
-                                          <span>{{ singleStay.name }}</span>
-                                        </div>
-                                      </mat-card-title>
-                                      <mat-card-subtitle>
-                                        <div class="stay-detail-holder">
-                                          <div class="stay-address">
-                                            <span>{{ singleStay.address }}</span>
-                                          </div>
-                                          <div class="stay-contact" *ngFor="let contact of singleStay.contacts">
-                                            <span>{{ contact }}</span>
-                                          </div>
-                                        </div>
-                                      </mat-card-subtitle>
-                                    </mat-card-header>
-                                    <mat-card-content>
-                                      <div class="no-trip-entity-message"
-                                        *ngIf="singleStay.rooms.length === 0; else roomTable">
-                                        <span>No Rooms entered for {{ singleStay.name }}</span>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        <span>{{ singleStay.name }}</span>
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="mat-expansion-content">
+                                      <div class="stay-card-holder">
+                                        <mat-card class="stay-card">
+                                          <mat-card-header>
+                                            <mat-card-title>
+                                              <div class="stay-name">
+                                                <span>{{ singleStay.name }}</span>
+                                              </div>
+                                            </mat-card-title>
+                                            <mat-card-subtitle>
+                                              <div class="stay-detail-holder">
+                                                <div class="stay-address">
+                                                  <span>{{ singleStay.address }}</span>
+                                                </div>
+                                                <div class="stay-contact" *ngFor="let contact of singleStay.contacts">
+                                                  <span>{{ contact }}</span>
+                                                </div>
+                                              </div>
+                                            </mat-card-subtitle>
+                                          </mat-card-header>
+                                          <mat-card-content>
+                                            <div class="no-trip-entity-message"
+                                              *ngIf="singleStay.rooms.length === 0; else roomTable">
+                                              <span>No Rooms entered for {{ singleStay.name }}</span>
+                                            </div>
+                                            <ng-template #roomTable>
+                                              <div class="table-holder">
+                                                <mat-table [dataSource]="singleStay.rooms">
+                                                  <ng-container matColumnDef="type">
+                                                    <mat-header-cell *matHeaderCellDef>
+                                                      <span>Room Type</span>
+                                                    </mat-header-cell>
+                                                    <mat-cell *matCellDef="let cellDef">
+                                                      <span>{{ roomValues[cellDef.type] }}</span>
+                                                    </mat-cell>
+                                                  </ng-container>
+                                                  <ng-container matColumnDef="cost">
+                                                    <mat-header-cell *matHeaderCellDef>
+                                                      <span>Cost</span>
+                                                    </mat-header-cell>
+                                                    <mat-cell *matCellDef="let cellDef">
+                                                      <span>₹&nbsp;{{ cellDef.cost }}</span>
+                                                    </mat-cell>
+                                                  </ng-container>
+                                                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                </mat-table>
+                                              </div>
+                                            </ng-template>
+                                          </mat-card-content>
+                                        </mat-card>
                                       </div>
-                                      <ng-template #roomTable>
-                                        <div class="table-holder">
-                                          <mat-table [dataSource]="singleStay.rooms">
-                                            <ng-container matColumnDef="type">
-                                              <mat-header-cell *matHeaderCellDef>
-                                                <span>Room Type</span>
-                                              </mat-header-cell>
-                                              <mat-cell *matCellDef="let cellDef">
-                                                <span>{{ roomValues[cellDef.type] }}</span>
-                                              </mat-cell>
-                                            </ng-container>
-                                            <ng-container matColumnDef="cost">
-                                              <mat-header-cell *matHeaderCellDef>
-                                                <span>Cost</span>
-                                              </mat-header-cell>
-                                              <mat-cell *matCellDef="let cellDef">
-                                                <span>₹&nbsp;{{ cellDef.cost }}</span>
-                                              </mat-cell>
-                                            </ng-container>
-                                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                                          </mat-table>
-                                        </div>
-                                      </ng-template>
-                                    </mat-card-content>
-                                  </mat-card>
-                                </div>
+                                    </div>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
                               </ng-template>
                             </div>
                           </mat-step>
