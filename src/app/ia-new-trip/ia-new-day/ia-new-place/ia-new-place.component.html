@@ -1,0 +1,74 @@
+<form action="javascript:void(0)" [formGroup]="placeFormGroup">
+  <div class="place-title-holder">
+    <div class="place-title">
+      <span>Add place details</span>
+    </div>
+    <div class="button-holder">
+      <div class="button">
+        <button mat-raised-button mat-icon-button tabindex="0" (click)="deletePlace(placeIndex)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="form-field-holder">
+    <div class="form-field">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Place" formControlName="name">
+        <mat-error *ngIf="placeFormGroup.get('name').hasError('required')">
+          <span>Place name is required!</span>
+        </mat-error>
+        <button mat-button matSuffix mat-icon-button tabindex="0" *ngIf="placeFormGroup.get('name').value"
+          (click)="clearInput(placeFormGroup.get('name'))">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-vertical-stepper>
+    <mat-step errorMessage="One or more fields blank in this stepper">
+      <ng-template matStepLabel>
+        <span>Attractions</span>
+      </ng-template>
+      <div class="step-detail-holder">
+        <div class="attraction-detail-holder"
+          *ngFor="let attraction of placeFormGroup.get('attractions').controls; let attractionIndex = index;">
+          <ng-container formArrayName="attractions">
+            <div class="attraction-card-holder">
+              <app-ia-new-attraction [attractionFormGroup]="placeFormGroup.get('attractions').controls[attractionIndex]"
+                [attractionIndex]="{ day: placeIndex.day, place: placeIndex.place, attraction: attractionIndex }">
+              </app-ia-new-attraction>
+            </div>
+          </ng-container>
+        </div>
+        <div class="button-holder">
+          <div class="button">
+            <button mat-raised-button color="primary" type="button" (click)="addNewAttraction(placeIndex)">
+              <span>Add New Attraction</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><span>Stays</span></ng-template>
+      <div class="step-detail-holder">
+        <div class="stay-detail-holder"
+          *ngFor="let stay of placeFormGroup.get('stays').controls; let stayIndex = index;">
+          <div class="stay-card-holder" formArrayName="stays">
+            <app-ia-new-stay [stayFormGroup]="placeFormGroup.get('stays').controls[stayIndex]"
+              [stayIndex]="{ day: placeIndex.day, place: placeIndex.place, stay: stayIndex }">
+            </app-ia-new-stay>
+          </div>
+        </div>
+        <div class="button-holder">
+          <div class="button">
+            <button mat-raised-button color="primary" type="button" (click)="addNewStay(placeIndex)">
+              <span>Add New Stay</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

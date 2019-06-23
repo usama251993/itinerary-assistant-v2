@@ -3,6 +3,17 @@ div {
   flex-direction: column;
 }
 
+span.text-enlarge {
+  font-size: 1.25rem;
+}
+
+span.text-bold {
+  font-weight: bold;
+}
+span.text-italic {
+  font-style: italic;
+}
+
 mat-card.master-card {
   mat-card-content {
     mat-accordion {
@@ -16,6 +27,14 @@ mat-card.master-card {
       /deep/ {
         div.mat-step-label {
           font-size: 1rem;
+        }
+      }
+    }
+
+    mat-horizontal-stepper {
+      /deep/ {
+        div.mat-horizontal-stepper-header-container {
+          justify-content: center;
         }
       }
     }
@@ -51,10 +70,7 @@ mat-card.master-card {
       }
     }
 
-    div.day-title-holder,
-    div.place-title-holder,
-    div.attraction-card-title-holder,
-    div.stay-card-title-holder {
+    div.trip-entity-title-holder {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -78,7 +94,7 @@ mat-card.master-card {
 
       mat-card.stay-card {
         margin: 0.5rem;
-        min-width: 25rem;
+        width: 25rem;
 
         /deep/ {
           div.mat-card-header-text {
@@ -92,6 +108,15 @@ mat-card.master-card {
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
+
+          div.stay-address {
+            margin-right: 0.5rem;
+          }
+
+          div.stay-contact {
+            margin-left: 0.5rem;
+            white-space: nowrap;
+          }
         }
 
         mat-card-content {
@@ -116,4 +141,10 @@ mat-card.master-card {
       }
     }
   }
+}
+
+div.no-trip-entity-message {
+  padding: 1rem 0rem;
+  font-style: italic;
+  color: rgba(196, 196, 196, 1);
 }

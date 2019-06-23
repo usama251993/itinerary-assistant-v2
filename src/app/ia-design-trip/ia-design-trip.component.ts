@@ -27,34 +27,34 @@ export class IaDesignTripComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.populateSourceDetails(this.tripService.tripInitData, this.sourceDetails);
-    this.designForm = this.formBuilder.group({
-      days: this.daysArray
-    })
+    // this.populateSourceDetails(this.tripService.tripInitData, this.sourceDetails);
+    // this.designForm = this.formBuilder.group({
+    //   days: this.daysArray
+    // })
   }
 
   get days() {
-    return this.designForm.get("days") as FormArray;
+    // return this.designForm.get("days") as FormArray;
+    return 0;
   }
 
   addNewDay() {
-    this.days.push(this.formBuilder.group({
-
-    }));
+    // this.days.push(this.formBuilder.group({
+    // }));
   }
 
   deleteRow(index: number) {
-    this.days.removeAt(index);
+    // this.days.removeAt(index);
   }
 
   populateSourceDetails(tripInitData: FormData, sourceDetails: sourceDetails) {
-    if (tripInitData === undefined) {
-      tripInitData = new FormData();
-      tripInitData["source"] = "Mumbai";
-      tripInitData["startDate"] = new Date();
-    }
-    sourceDetails.source = tripInitData["source"];
-    sourceDetails.startDate = (tripInitData["startDate"] as Date).toDateString();
+    //   if (tripInitData === undefined) {
+    //     tripInitData = new FormData();
+    //     tripInitData["source"] = "Mumbai";
+    //     tripInitData["startDate"] = new Date();
+    //   }
+    //   sourceDetails.source = tripInitData["source"];
+    //   sourceDetails.startDate = (tripInitData["startDate"] as Date).toDateString();
   }
 
 }

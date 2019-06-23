@@ -17,10 +17,6 @@ mat-card.master-card {
       font-size: 1rem;
     }
 
-    div.trip-detail {
-      margin: 0.5rem 0rem;
-    }
-
     mat-horizontal-stepper {
       /deep/ {
         div.mat-horizontal-stepper-header-container {
@@ -30,95 +26,70 @@ mat-card.master-card {
           padding: 0rem 1rem;
         }
       }
+    }
 
-      div.button-holder {
-        justify-content: flex-end;
-        align-items: flex-end;
-
-        div.button {
-          margin: 0.5rem;
-
-          button.next-button {
-            padding: 0rem 0.5rem 0rem 1rem;
-          }
-
-          button.previous-button {
-            padding: 0rem 1rem 0rem 0.5rem;
-          }
+    mat-vertical-stepper {
+      /deep/ {
+        div.mat-step-label {
+          font-size: 1rem;
         }
       }
     }
 
-    div.day-title-holder,
-    div.place-title-holder,
-    div.attraction-card-title-holder,
-    div.stay-card-title-holder {
+    div.trip-detail {
+      margin: 0.5rem 0rem;
+    }
+
+    div.day-title-holder {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       font-size: 1.25rem;
     }
 
-    mat-card.attraction-card {
-      margin: 0.5rem;
-      /deep/ {
-        div.mat-card-header-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-      }
-    }
-
-    mat-card.stay-card {
-      margin: 0.5rem;
+    mat-list-item {
+      height: unset;
 
       /deep/ {
-        div.mat-card-header-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
+        div.mat-list-item-content {
+          padding: 0rem;
         }
       }
 
-      mat-list-item {
-        height: unset;
+      div.room-detail {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-        /deep/ {
-          div.mat-list-item-content {
-            padding: 0rem;
-          }
-        }
+        div.form-field-holder {
+          margin: 0rem 0.5rem;
+          flex-flow: row wrap;
 
-        div.room-detail {
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-
-          div.form-field-holder {
+          div.form-field {
+            flex: 1;
             margin: 0rem 0.5rem;
-            flex-flow: row wrap;
-
-            div.form-field {
-              flex: 1;
-              margin: 0rem 0.5rem;
-            }
           }
         }
       }
     }
   }
+
   mat-card-actions {
     margin: 0rem;
     padding: 0rem;
-
-    // div.button-holder {
-    // div.button {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    // }
-    // }
+  }
+  div.button-holder {
+    div.button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 0.5rem 0rem 0.5rem 1rem;
+    }
+  }
+}
+div.button-holder {
+  div.button#create-trip {
+    align-items: stretch;
   }
 }

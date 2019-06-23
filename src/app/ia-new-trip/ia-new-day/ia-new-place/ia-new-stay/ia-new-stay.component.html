@@ -1,0 +1,107 @@
+<form action="javascript:void(0)" [formGroup]="stayFormGroup">
+  <mat-card class="stay-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="stay-card-title-holder">
+          <div class="stay-card-title">
+            <span>Add stay details</span>
+          </div>
+          <div class="button-holder">
+            <div class="button">
+              <button mat-raised-button mat-icon-button (click)="deleteStay(stayIndex)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-field-holder">
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Name of the hotel" formControlName="name">
+            <mat-error *ngIf="stayFormGroup.get('name').hasError('required')">
+              <span>Hotel Name is required</span>
+            </mat-error>
+            <button mat-button matSuffix mat-icon-button tabindex="0" *ngIf="stayFormGroup.get('name').value"
+              (click)="clearInput(stayFormGroup.get('name'))">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Location (Use Google Maps Plus Code)" formControlName="address">
+            <button mat-button matSuffix mat-icon-button tabindex="0" *ngIf="stayFormGroup.get('address').value"
+              (click)="clearInput(stayFormGroup.get('address'))">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <ng-container *ngFor="let eachContact of stayFormGroup.get('contacts').controls; let contactIndex = index;">
+        <ng-container formArrayName="contacts">
+          <div class="form-field-holder">
+            <div class="form-field">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Contact" [formControlName]="contactIndex">
+                <button mat-button matSuffix mat-icon-button tabindex="0"
+                  *ngIf="stayFormGroup.get('contacts').controls[contactIndex].value"
+                  (click)="clearInput(stayFormGroup.get('contacts').controls[contactIndex])">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+              <div class="button-holder">
+                <div class="button">
+                  <button mat-raised-button mat-icon-button (click)="deleteContact(stayIndex, contactIndex)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div class="button-holder">
+        <div class="button">
+          <button mat-raised-button (click)="addNewContact(stayIndex)">
+            <span>Add Contact</span>
+          </button>
+        </div>
+      </div>
+      <div class="room-list-holder">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span>Room Details</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item *ngFor="let room of stayFormGroup.get('rooms').controls; let roomIndex = index;">
+                <ng-container formArrayName="rooms">
+                  <div class="room-detail-holder">
+                    <app-ia-new-room [roomFormGroup]="stayFormGroup.get('rooms').controls[roomIndex]"
+                      [roomIndex]="{ day: stayIndex.day, place: stayIndex.place, stay: stayIndex.stay, room: roomIndex }">
+                    </app-ia-new-room>
+                  </div>
+                </ng-container>
+              </mat-list-item>
+            </mat-list>
+            <div class="button-holder">
+              <div class="button">
+                <button mat-raised-button type="button" (click)="addNewRoom(stayIndex)">
+                  <span>Add Room</span>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</form>

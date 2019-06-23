@@ -1,0 +1,159 @@
+[
+  {
+    "tripStart": {
+      "sourceCity": "Mumbai",
+      "startDate": "2019-06-20T18:30:00.000Z"
+    },
+    "days": [
+      {
+        "day": {
+          "places": [
+            {
+              "place": {
+                "name": "Thane",
+                "attractions": [
+                  {
+                    "attraction": {
+                      "name": "Gadkari",
+                      "location": "",
+                      "description": ""
+                    }
+                  },
+                  {
+                    "attraction": {
+                      "name": "Home",
+                      "location": "",
+                      "description": ""
+                    }
+                  }
+                ],
+                "stays": [
+                  {
+                    "stay": {
+                      "name": "Hotel 1",
+                      "address": "",
+                      "contacts": [
+                        ""
+                      ],
+                      "rooms": [
+                        {
+                          "room": {
+                            "type": "single",
+                            "cost": 300
+                          }
+                        },
+                        {
+                          "room": {
+                            "type": "double",
+                            "cost": 200
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "stay": {
+                      "name": "Second Stay",
+                      "address": "",
+                      "contacts": [
+                        ""
+                      ],
+                      "rooms": [
+                        {
+                          "room": {
+                            "type": "single",
+                            "cost": 300
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "place": {
+                "name": "Place 2",
+                "attractions": [
+                  {
+                    "attraction": {
+                      "name": "Attraction 2-1",
+                      "location": "",
+                      "description": ""
+                    }
+                  }
+                ],
+                "stays": [
+                  {
+                    "stay": {
+                      "name": "Stay 2-1",
+                      "address": "",
+                      "contacts": [
+                        ""
+                      ],
+                      "rooms": [
+                        {
+                          "room": {
+                            "type": "single",
+                            "cost": 500
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "tripStart": {
+      "sourceCity": "",
+      "startDate": ""
+    },
+    "days": [
+      {
+        "day": {
+          "places": [
+            {
+              "place": {
+                "name": "",
+                "attractions": [
+                  {
+                    "attraction": {
+                      "name": "",
+                      "location": "",
+                      "description": ""
+                    }
+                  }
+                ],
+                "stays": [
+                  {
+                    "stay": {
+                      "name": "",
+                      "address": "",
+                      "contacts": [
+                        ""
+                      ],
+                      "rooms": [
+                        {
+                          "room": {
+                            "type": "single",
+                            "cost": ""
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

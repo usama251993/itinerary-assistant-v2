@@ -1,0 +1,24 @@
+<form action="javascript:void(0)" [formGroup]="dayFormGroup">
+  <mat-horizontal-stepper labelPosition="bottom" formArrayName="places" #placeStepper>
+    <mat-step *ngFor="let place of dayFormGroup.get('places').controls; let placeIndex = index;">
+      <ng-template matStepLabel>
+        <span
+          *ngIf="dayFormGroup.get('places').controls[placeIndex].get('name').value; else defaultPlaceLabel">{{ dayFormGroup.get('places').controls[placeIndex].get('name').value }}</span>
+        <ng-template #defaultPlaceLabel>
+          <span>Place {{ placeIndex + 1 }}</span>
+        </ng-template>
+      </ng-template>
+      <div class="step-detail-holder">
+        <app-ia-new-place [placeFormGroup]="dayFormGroup.get('places').controls[placeIndex]"
+          [placeIndex]="{ day: dayIndex.day, place: placeIndex }"></app-ia-new-place>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>
+<div class="button-holder">
+  <div class="button">
+    <button mat-raised-button color="primary" type="button" (click)="addNewPlace(dayIndex.day, placeStepper)">
+      <span>Add New Place</span>
+    </button>
+  </div>
+</div>

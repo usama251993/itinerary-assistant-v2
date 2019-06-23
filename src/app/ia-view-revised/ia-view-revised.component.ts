@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { IaTripService } from '../shared/services/ia-trip.service';
-import { IaTripModel } from '../shared/models/ia-trip.model';
+import { IaTripFormBuilderService } from '../shared/services/ia-trip/ia-trip-form-builder.service';
 
 @Component({
   selector: 'app-ia-view-revised',
@@ -11,34 +11,40 @@ import { IaTripModel } from '../shared/models/ia-trip.model';
 })
 export class IaViewRevisedComponent implements OnInit {
 
-  @ViewChild("downloadButton") anchorRef: ElementRef;
-
-  trips: IaTripModel[] = [];
+  newTrip: {} = {};
   displayedColumns: string[] = [];
-  export: { fileURI: any, fileName: string } = { fileURI: {}, fileName: "trip " + new Date(Date.now()).toISOString() + ".json" };
+  dateOptions: {} = {};
+  roomValues: {};
 
   constructor(private tripService: IaTripService,
-    private domSanitizer: DomSanitizer) { }
+    private tripFormBuilder: IaTripFormBuilderService,
+    private route: ActivatedRoute,
+    private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.trips = this.tripService.trips;
+    this.newTrip = this.tripService.newTrip;
+    this.dateOptions = this.tripService.dateOptions;
     this.displayedColumns = this.tripService.displayedColumns;
-    this.displayedColumns.splice(-1);
+    this.roomValues = this.tripFormBuilder.roomValues;
+
   }
 
-  exportTrip(tripModel: IaTripModel) {
-    let stringifiedJSON = this.tripService.exportToJSON(tripModel);
-    this.generateJSONURI(stringifiedJSON);
+  getCurrentDate(startDate: Date, dayIndex: number) {
+    let currentDate = new Date(Date.now());
+    currentDate.setDate(new Date(startDate).getDate() + dayIndex);
+    currentDate.setMonth(new Date(startDate).getMonth());
+    currentDate.setFullYear(new Date(startDate).getFullYear());
+    return currentDate.toLocaleDateString("en-IN", this.dateOptions);
   }
 
-  generateJSONURI(stringifiedJSON: any) {
-    var objectURI = this.domSanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(stringifiedJSON));
-    this.export.fileURI = objectURI;
-    this.triggerDownload();
+  exportTrip(tripModel: FormData) {
+    this.tripService.exportToJSON(tripModel);
   }
 
-  triggerDownload() {
-    (this.anchorRef.nativeElement as HTMLAnchorElement).click();
+  editTrip(inputObject: {}) {
+    this.tripService.editFlag = true;
+    this.tripService.editTrip(inputObject);
+    this.router.navigate(["../" + "new"], { relativeTo: this.route });
   }
-
 }

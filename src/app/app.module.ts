@@ -22,6 +22,8 @@ import {
   MatSnackBarModule,
   MatBottomSheetModule,
 } from '@angular/material';
+// import { MatFileUploadModule } from 'angular-material-fileupload';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -40,6 +42,14 @@ import { IaViewRevisedComponent } from './ia-view-revised/ia-view-revised.compon
 import { IaOverviewComponent } from './ia-overview/ia-overview.component';
 import { FormConfirmDialogComponent } from './shared/components/form-confirm-dialog/form-confirm-dialog.component';
 import { FormConfirmModalComponent } from './shared/components/form-confirm-modal/form-confirm-modal.component';
+import { IaNewDayComponent } from './ia-new-trip/ia-new-day/ia-new-day.component';
+import { IaNewPlaceComponent } from './ia-new-trip/ia-new-day/ia-new-place/ia-new-place.component';
+import { IaNewAttractionComponent } from './ia-new-trip/ia-new-day/ia-new-place/ia-new-attraction/ia-new-attraction.component';
+import { IaNewStayComponent } from './ia-new-trip/ia-new-day/ia-new-place/ia-new-stay/ia-new-stay.component';
+import { IaNewRoomComponent } from './ia-new-trip/ia-new-day/ia-new-place/ia-new-stay/ia-new-room/ia-new-room.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TripResolverService } from './shared/services/resolver/trip-resolver.service';
+import { IaLoadTripFormComponent } from './ia-load-trip-form/ia-load-trip-form.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +64,16 @@ import { FormConfirmModalComponent } from './shared/components/form-confirm-moda
     IaOverviewComponent,
     FormConfirmDialogComponent,
     FormConfirmModalComponent,
+    IaNewDayComponent,
+    IaNewPlaceComponent,
+    IaNewAttractionComponent,
+    IaNewStayComponent,
+    IaNewRoomComponent,
+    IaLoadTripFormComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -79,11 +96,14 @@ import { FormConfirmModalComponent } from './shared/components/form-confirm-moda
     MatStepperModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    // MatFileUploadModule
   ],
   providers: [
     IaNavigationService,
     IaTripService,
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true } },
+    TripResolverService
   ],
   entryComponents: [
     FormConfirmDialogComponent,

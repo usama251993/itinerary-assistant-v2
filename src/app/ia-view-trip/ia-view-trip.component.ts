@@ -24,8 +24,7 @@ export class IaViewTripComponent implements OnInit {
   constructor(private tripService: IaTripService) { }
 
   ngOnInit(): void {
-    this.trips = this.tripService.trips;
-    console.log(this.trips);
+    this.trips = this.tripService.tripsArray;
   }
 
 }

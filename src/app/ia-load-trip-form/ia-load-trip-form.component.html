@@ -1,0 +1,49 @@
+<!-- <label for="singleFile">Upload file</label>
+<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+<br>
+ 
+<mat-file-upload-queue #fileUploadQueue
+    [fileAlias]="'file'"
+    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+ 
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue> -->
+
+<div class="form-holder">
+  <form action="javascript:void(0)" [formGroup]="loadTripForm">
+    <div class="card-holder">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span>Upload trip file</span>
+          </mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="form-field-holder">
+            <div class="form-field">
+              <!-- <button mat-raised-button color="primary">
+                <label for="trip-file">Choose a file
+                  <input name="trip-file" style="display: none;" type="file" accept="*.json">
+                </label>
+              </button> -->
+              <label for="trip-file">Choose a file</label>
+              <input name="trip-file" type="file" accept=".json" formControlName="tripFile"
+                (change)="handleFiles($event)">
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="button-holder">
+            <div class="button">
+              <button mat-raised-button color="primary" (click)="formSubmit()">
+                <span>Next</span>
+                <mat-icon>chevron_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </form>
+</div>

@@ -1,5 +1,5 @@
 {
-  "tripInit": {
+  "tripStart": {
     "startDate": "2019-06-13T18:30:00.000Z",
     "sourceCity": "Mumbai"
   },
@@ -14,7 +14,8 @@
                 {
                   "attraction": {
                     "name": "One",
-                    "description": ""
+                    "description": "",
+                    "location": ""
                   }
                 }
               ],

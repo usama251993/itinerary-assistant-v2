@@ -94,3 +94,30 @@ Further Steps
 5. Trip Overview Component to be designed
 6. Contacts to be used as a FormArray to hold multiple phone numbers for a Stay
 7. Transit Moule from Commit #3
+
+# Commit #6:
+The JSON data can be loaded to view the trip
+Transit module to be added as a sibling of Attractions and Stays
+Trip service has been greatly optimized
+Models are now obsolete
+A single stay can have multiple Contacts
+
+## The trip editing form when landed via "Edit Trip" is horribly slow! ##
+## Optimize the buildFormGroup() in IaTripFormBuilderService on priority ##
+## Incorporate use of Resolver immediately! ##
+
+The entire app has been modularized
+  There is now a separate component for each entity of the trip
+    ia-new-trip
+    └─ ia-new-day
+       └─ ia-new-place
+          └─ ia-new-attraction
+          └─ ia-new-stay
+             └─ ia-new-room
+
+Further Steps
+1. Switch between Stepper UI and Tabs UI for viewing the trip
+2. Transit Moule from Commit #3
+  a. Transit module to be added as a sibling of Attractions and Stays
+3. Trip Overview Component to be designed
+4. Add CanDeactivate guard on Trip Form

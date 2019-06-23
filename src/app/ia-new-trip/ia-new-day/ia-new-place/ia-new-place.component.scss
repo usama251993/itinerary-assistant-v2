@@ -1,0 +1,35 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+mat-vertical-stepper {
+  /deep/ {
+    div.mat-step-label {
+      font-size: 1rem;
+    }
+  }
+}
+
+div.place-title-holder {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+div.button-holder {
+  div.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0.5rem 0rem 0.5rem 1rem;
+  }
+}
