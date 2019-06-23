@@ -49,6 +49,8 @@ export class IaNewTripComponent implements OnInit {
     let formDate = new Date(startDate);
     let currentDate = new Date(Date.now());
     currentDate.setDate(formDate.getDate() + dayIndex);
+    currentDate.setMonth(formDate.getMonth());
+    currentDate.setFullYear(formDate.getFullYear());
     return currentDate.toLocaleDateString("en-IN", this.dateOptions);
   }
 

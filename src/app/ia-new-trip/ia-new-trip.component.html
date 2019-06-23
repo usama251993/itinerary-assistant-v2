@@ -76,9 +76,9 @@
                         </mat-expansion-panel-header>
                         <div class="accordion-detail-holder">
                           <div class="accordion-detail">
-                            <!-- <span>The trip starts from
+                            <span>The trip starts from
                               {{ tripForm.get('tripStart').get('sourceCity').value | titlecase }} on
-                              {{ tripForm.get('tripStart').get('startDate').value.toLocaleDateString("en-IN", dateOptions) }}</span> -->
+                              {{ getCurrentDate(tripForm.get('tripStart').get('startDate').value, 0) }}</span>
                           </div>
                         </div>
                       </mat-expansion-panel>
