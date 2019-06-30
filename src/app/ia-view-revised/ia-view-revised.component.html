@@ -1,4 +1,5 @@
 <div class="card-holder">
+  <!-- <mat-card class="master-card" *ngIf="!noTripLoaded; else noTripLoaded"> -->
   <mat-card class="master-card">
     <mat-card-header>
       <mat-card-title>
@@ -29,7 +30,7 @@
         </div>
         <div class="trip-detail">
           <mat-vertical-stepper linear="false">
-            <mat-step *ngFor="let singleDay of newTrip.days; let dayIndex = index;">
+            <mat-step *ngFor="let singleDay of newTrip.days; let dayIndex = index;" expanded="false">
               <ng-template matStepLabel>
                 <div class="mat-step-label-holder">
                   <div class="step-day">
@@ -46,20 +47,38 @@
                 </div>
                 <ng-template #placeDetails>
                   <div class="trip-entity-title-holder">
-                    <div class="day-title">
-                      <span></span>
+                    <div class="button">
+                      <button mat-raised-button mat-icon-button matStepperPrevious
+                        matTooltip="Previous Day"
+                        [disabled]="dayIndex === 0">
+                        <mat-icon>arrow_left</mat-icon>
+                      </button>
+                    </div>
+                    <div class="button">
+                      <button mat-raised-button mat-icon-button matStepperNext
+                        matTooltip="Next Day" [disabled]="dayIndex === newTrip.days.length - 1">
+                        <mat-icon>arrow_right</mat-icon>
+                      </button>
+                    </div>
+                    <div class="trip-entity-title">
+                      <span
+                        *ngIf="singleDay.places[0].name !== singleDay.places[singleDay.places.length - 1].name; else roundTrip">{{ singleDay.places[0].name }}
+                        to
+                        {{ singleDay.places[singleDay.places.length - 1].name }}</span>
+                      <ng-template #roundTrip>
+                        <span>{{ singleDay.places[0].name }} Round Trip</span>
+                      </ng-template>
                     </div>
                   </div>
                   <mat-horizontal-stepper labelPosition="bottom">
                     <mat-step *ngFor="let singlePlace of singleDay.places; let placeIndex = index;">
                       <ng-template matStepLabel>
-                        <!-- <span>Place {{ placeIndex + 1 }}</span> -->
                         <span>{{ singlePlace.name }}</span>
                       </ng-template>
                       <div class="step-detail-holder">
                         <div class="place-name-holder">
                           <div class="place-name">
-                            <span>{{ singlePlace.name }} details</span>
+                            <span>To do in {{ singlePlace.name }}</span>
                           </div>
                         </div>
                         <mat-vertical-stepper>
@@ -73,24 +92,6 @@
                                 <span>No Attractions entered for {{ singlePlace.name }}</span>
                               </div>
                               <ng-template #attractionCards>
-                                <!-- <div class="attraction-card-holder">
-                                  <mat-card class="attraction-card"
-                                    *ngFor="let singleAttraction of singlePlace.attractions; let attractionIndex = index;">
-                                    <mat-card-header>
-                                      <mat-card-title>
-                                        <span>{{ singleAttraction.name }}</span>
-                                      </mat-card-title>
-                                      <mat-card-subtitle>
-                                        <span>{{ singleAttraction.location }}</span>
-                                      </mat-card-subtitle>
-                                    </mat-card-header>
-                                    <mat-card-content>
-                                      <span>{{ singleAttraction.description }}</span>
-                                    </mat-card-content>
-                                    <mat-card-actions>
-                                    </mat-card-actions>
-                                  </mat-card>
-                                </div> -->
                                 <mat-accordion>
                                   <mat-expansion-panel
                                     *ngFor="let singleAttraction of singlePlace.attractions; let attractionIndex = index;">
@@ -151,11 +152,15 @@
                                             </mat-card-title>
                                             <mat-card-subtitle>
                                               <div class="stay-detail-holder">
-                                                <div class="stay-address">
-                                                  <span>{{ singleStay.address }}</span>
+                                                <div class="stay-address-holder">
+                                                  <div class="stay-address">
+                                                    <span>{{ singleStay.address }}</span>
+                                                  </div>
                                                 </div>
-                                                <div class="stay-contact" *ngFor="let contact of singleStay.contacts">
-                                                  <span>{{ contact }}</span>
+                                                <div class="stay-contact-holder">
+                                                  <div class="stay-contact" *ngFor="let contact of singleStay.contacts">
+                                                    <span>{{ contact }}</span>
+                                                  </div>
                                                 </div>
                                               </div>
                                             </mat-card-subtitle>
@@ -224,4 +229,26 @@
       </div>
     </mat-card-actions>
   </mat-card>
+  <!-- <ng-template #noTripLoaded>
+    <mat-card>
+      <mat-card-header>
+        <span>Trip cannot be viewed</span>
+      </mat-card-header>
+      <mat-card-content>
+        <span>You might not have loaded a trip before landing on this page</span>
+        <span>OR</span>
+        <span>You might have refreshed this page while viewing a trip</span>
+        <span>Try Loading the trip again</span>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="button-holder">
+          <div class="button">
+            <button mat-raised-button color="primary">
+              <span>Load Trip</span>
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </ng-template> -->
 </div>

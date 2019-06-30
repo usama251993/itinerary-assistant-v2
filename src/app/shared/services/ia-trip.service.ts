@@ -250,14 +250,17 @@ export class IaTripService {
     // })
   ]
 
-
   constructor(private tripFormBuilder: IaTripFormBuilderService) { }
 
-  createNewTrip(formData: FormData) {
+  getTrip() {
+    return this.newTrip;
+  }
+
+  createNewTrip(formData: FormData): void {
     this.newTrip = formData;
   }
 
-  exportToJSON(tripModel: FormData) {
+  exportToJSON(tripModel: FormData): void {
     this.export.fileURI = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tripModel));
     let anchorElement = window.document.createElement("a");
     anchorElement.setAttribute("href", this.export.fileURI);
@@ -270,7 +273,7 @@ export class IaTripService {
     });
   }
 
-  importFromJSON(fileToUpload: File) {
+  importFromJSON(fileToUpload: File): void {
     this.newTrip = {};
     let fileReader = new FileReader();
     fileReader.readAsText(fileToUpload);
@@ -279,11 +282,11 @@ export class IaTripService {
     }, false);
   }
 
-  editTrip(inputObject: {}) {
+  editTrip(inputObject: {}): void {
     this.newTrip = inputObject;
   }
 
-  customSetValue(inputFormGroup: FormGroup, inputFormData: FormData) {
+  customSetValue(inputFormGroup: FormGroup, inputFormData: FormData): void {
     inputFormGroup = this.tripFormBuilder.buildFormGroup(inputFormGroup, inputFormData);
     inputFormGroup.patchValue(inputFormData);
   }

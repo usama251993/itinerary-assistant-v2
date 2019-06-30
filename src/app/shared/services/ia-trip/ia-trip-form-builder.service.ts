@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatBottomSheetRef, MatDialogRef, MatSnackBar, MatBottomSheet, MatDialog, MatStepper } from '@angular/material';
 import { FormConfirmModalComponent } from '../../components/form-confirm-modal/form-confirm-modal.component';
 
@@ -306,81 +306,62 @@ export class IaTripFormBuilderService {
   }
 
   buildFormGroup(inputFormGroup: FormGroup, inputFormData: FormData): FormGroup {
-    (inputFormGroup
-      .get("days") as FormArray)
-      .removeAt(0);
-    inputFormData["days"].forEach((dayData: {}, dayIndex: number) => {
-      (inputFormGroup
-        .get("days") as FormArray)
-        .push(this.initializeDaysArray());
-      ((inputFormGroup
-        .get("days") as FormArray).controls[dayIndex]
-        .get("places") as FormArray)
-        .removeAt(0);
+    let that = this;
 
-      dayData["places"].forEach((placeData: {}, placeIndex: number) => {
-        ((inputFormGroup
-          .get("days") as FormArray).controls[dayIndex]
-          .get("places") as FormArray)
-          .push(this.initializePlacesArray());
-
-        (((inputFormGroup
-          .get("days") as FormArray).controls[dayIndex]
-          .get("places") as FormArray).controls[placeIndex]
-          .get("attractions") as FormArray)
-          .removeAt(0);
-        placeData["attractions"].forEach((attractionData: {}, attractionIndex: number) => {
-          (((inputFormGroup
-            .get("days") as FormArray).controls[dayIndex]
-            .get("places") as FormArray).controls[placeIndex]
-            .get("attractions") as FormArray)
-            .push(this.initializeAttractionsArray());
-        });
-
-        (((inputFormGroup
-          .get("days") as FormArray).controls[dayIndex]
-          .get("places") as FormArray).controls[placeIndex]
-          .get("stays") as FormArray)
-          .removeAt(0);
-        placeData["stays"].forEach((stayData: {}, stayIndex: number) => {
-          (((inputFormGroup
-            .get("days") as FormArray).controls[dayIndex]
-            .get("places") as FormArray).controls[placeIndex]
-            .get("stays") as FormArray)
-            .push(this.initializeStaysArray());
-
-          ((((inputFormGroup
-            .get("days") as FormArray).controls[dayIndex]
-            .get("places") as FormArray).controls[placeIndex]
-            .get("stays") as FormArray).controls[stayIndex]
-            .get("contacts") as FormArray)
-            .removeAt(0);
-          stayData["contacts"].forEach((contactData: string, contactIndex: number) => {
-            ((((inputFormGroup
-              .get("days") as FormArray).controls[dayIndex]
-              .get("places") as FormArray).controls[placeIndex]
-              .get("stays") as FormArray).controls[stayIndex]
-              .get("contacts") as FormArray)
-              .push(this.formBuilder.control(""));
-          });
-
-          ((((inputFormGroup
-            .get("days") as FormArray).controls[dayIndex]
-            .get("places") as FormArray).controls[placeIndex]
-            .get("stays") as FormArray).controls[stayIndex]
-            .get("rooms") as FormArray)
-            .removeAt(0);
-          stayData["rooms"].forEach((roomData: {}, roomIndex: number) => {
-            ((((inputFormGroup
-              .get("days") as FormArray).controls[dayIndex]
-              .get("places") as FormArray).controls[placeIndex]
-              .get("stays") as FormArray).controls[stayIndex]
-              .get("rooms") as FormArray)
-              .push(this.initializeRoomsArray());
-          });
-        });
+    function removeAndInitDays() {
+      (inputFormGroup.get("days") as FormArray).removeAt(0);
+      inputFormData["days"].forEach((dayData: {}, dayIndex: number) => {
+        (inputFormGroup.get("days") as FormArray).push(that.initializeDaysArray());
+        removeAndInitPlaces((inputFormGroup.get("days") as FormArray), dayData, dayIndex);
       });
-    })
+    }
+
+    function removeAndInitPlaces(dayFormArray: FormArray, dayData: {}, dayIndex: number) {
+      (dayFormArray.controls[dayIndex].get("places") as FormArray).removeAt(0);
+      dayData["places"].forEach((placeData: {}, placeIndex: number) => {
+        (dayFormArray.controls[dayIndex].get("places") as FormArray)
+          .push(that.initializePlacesArray());
+        removeAndInitAttractions((dayFormArray.controls[dayIndex].get("places") as FormArray), placeData, placeIndex);
+        removeAndInitStay((dayFormArray.controls[dayIndex].get("places") as FormArray), placeData, placeIndex);
+      })
+    }
+
+    function removeAndInitAttractions(placeFormArray: FormArray, placeData: {}, placeIndex: number) {
+      (placeFormArray.controls[placeIndex].get("attractions") as FormArray).removeAt(0);
+      placeData["attractions"].forEach((attractionData: {}, attractionIndex: number) => {
+        (placeFormArray.controls[placeIndex].get("attractions") as FormArray)
+          .push(that.initializeAttractionsArray());
+      });
+    }
+
+    function removeAndInitStay(placeFormArray: FormArray, placeData: {}, placeIndex: number) {
+      (placeFormArray.controls[placeIndex].get("stays") as FormArray).removeAt(0);
+      placeData["stays"].forEach((stayData: {}, stayIndex: number) => {
+        (placeFormArray.controls[placeIndex].get("stays") as FormArray)
+          .push(that.initializeStaysArray());
+        removeAndInitContacts((placeFormArray.controls[placeIndex].get("stays") as FormArray), stayData, stayIndex);
+        removeAndInitRooms((placeFormArray.controls[placeIndex].get("stays") as FormArray), stayData, stayIndex);
+      });
+    }
+
+    function removeAndInitContacts(stayFormArray: FormArray, stayData: {}, stayIndex: number) {
+      (stayFormArray.controls[stayIndex].get("contacts") as FormArray).removeAt(0);
+      stayData["contacts"].forEach((contactData: string, contactIndex: number) => {
+        (stayFormArray.controls[stayIndex]
+          .get("contacts") as FormArray)
+          .push(that.formBuilder.control(""));
+      });
+    }
+
+    function removeAndInitRooms(stayFormArray: FormArray, stayData: {}, stayIndex: number) {
+      (stayFormArray.controls[stayIndex].get("rooms") as FormArray).removeAt(0);
+      stayData["rooms"].forEach((roomData: {}, roomIndex: number) => {
+        (stayFormArray.controls[stayIndex].get("rooms") as FormArray)
+          .push(that.initializeRoomsArray());
+      });
+    }
+
+    removeAndInitDays();
 
     return inputFormGroup;
   }

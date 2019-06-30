@@ -13,14 +13,12 @@ import { CanDeactivateGuardService } from './shared/services/guard/can-deactivat
 const routes: Routes = [
   { path: "home", component: IaHomeComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "new", component: IaNewTripComponent, canDeactivate: [CanDeactivateGuardService] },
+  { path: "new", component: IaNewTripComponent, resolve: { tripData: TripResolverService }, canDeactivate: [CanDeactivateGuardService] },
   { path: "load", component: IaLoadTripFormComponent },
-  { path: "edit", component: IaEditTripComponent },
-  { path: "design", component: IaDesignTripComponent },
-  { path: "view", component: IaViewRevisedComponent, resolve: { tripData: TripResolverService } },
-  // { path: "view", component: IaViewRevisedComponent },
-  // { path: "view", component: IaViewTripComponent },
-
+  // { path: "edit", component: IaEditTripComponent },
+  // { path: "design", component: IaDesignTripComponent },
+  // { path: "view", component: IaViewRevisedComponent, resolve: { tripData: TripResolverService } }
+  { path: "view", component: IaViewTripComponent, resolve: { tripData: TripResolverService } }
 ];
 
 @NgModule({

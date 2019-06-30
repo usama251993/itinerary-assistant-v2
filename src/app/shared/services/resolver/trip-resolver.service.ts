@@ -5,15 +5,16 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 @Injectable({
   providedIn: 'root'
 })
-export class TripResolverService implements Resolve<string> {
+export class TripResolverService implements Resolve<{}> {
 
   constructor(private tripService: IaTripService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    // console.log(route);
-    // console.log(state);
+    console.log(route);
+    console.log(state);
     // console.log(this.tripService.newTrip);
-    return "";
+    // return "";
+    return this.tripService.getTrip();
     // return this.tripService.loadTrip();
   }
 

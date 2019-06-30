@@ -121,3 +121,13 @@ Further Steps
   a. Transit module to be added as a sibling of Attractions and Stays
 3. Trip Overview Component to be designed
 4. Add CanDeactivate guard on Trip Form
+
+#Commit #7:
+Transit is currently placed as the last entry of attractions array
+Plan C.json is a file which contains the details of entire trip
+
+Further Steps
+1. Switch between Stepper UI and Tabs UI for viewing the trip
+2. Transit Moule from Commit #3
+3. Trip Overview Component to be designed
+4. Add CanDeactivate guard on Trip Form
