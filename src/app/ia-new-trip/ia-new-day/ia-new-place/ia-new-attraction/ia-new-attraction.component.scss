@@ -1,0 +1,38 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card.attraction-card {
+  margin: 0.5rem 0rem;
+  /deep/ {
+    div.mat-card-header-text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  }
+}
+
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+div.attraction-card-title-holder {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+div.button-holder {
+  div.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0.5rem 0rem 0.5rem 1rem;
+  }
+}

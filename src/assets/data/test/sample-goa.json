@@ -1,0 +1,145 @@
+{
+  "tripInit": {
+    "sourceCity": "mumbai",
+    "startDate": "Thu Jun 13 2019 00: 00: 00 GMT+0530 (India Standard Time)"
+  },
+  "days": [
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "attractions": [],
+              "name": "Madgaon",
+              "stays": [
+                {
+                  "stay": {
+                    "address": "",
+                    "contact": "",
+                    "name": "Archies",
+                    "rooms": [
+                      {
+                        "room": {
+                          "cost": "3000",
+                          "type": "double"
+                        }
+                      },
+                      {
+                        "room": {
+                          "cost": "4000",
+                          "type": "multiple"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "place": {
+              "attractions": [
+                {
+                  "attraction": {
+                    "description": "",
+                    "name": "Beach"
+                  }
+                }
+              ],
+              "name": "Colva",
+              "stays": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "attractions": [
+              {
+                "attraction": {
+                  "description": "",
+                  "name": "Chapora"
+                }
+              },
+              {
+                "attraction": {
+                  "description": "",
+                  "name": "Beach"
+                }
+              }
+            ],
+            "name": "Arambol",
+            "stays": [
+              {
+                "stay": {
+                  "address": "",
+                  "contact": "",
+                  "name": "Sagar",
+                  "rooms": [
+                    {
+                      "room": {
+                        "cost": "600",
+                        "type": "double"
+                      }
+                    },
+                    {
+                      "room": {
+                        "cost": "800",
+                        "type": "multiple"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "attractions": [
+              {
+                "attraction": {
+                  "description": "",
+                  "name": "Beach"
+                }
+              },
+              {
+                "attraction": {
+                  "description": "",
+                  "name": "Thalassa"
+                }
+              }
+            ],
+            "name": "Calangute",
+            "stays": []
+          }
+        ]
+      }
+    },
+    {
+      "day": {
+        "places": [
+          {
+            "attractions": [
+              {
+                "attraction": {
+                  "description": "",
+                  "name": "Market"
+                }
+              }
+            ],
+            "name": "Panjim",
+            "stays": []
+          }
+        ]
+      }
+    }
+  ]
+}

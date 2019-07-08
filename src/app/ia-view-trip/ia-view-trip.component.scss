@@ -1,219 +1,150 @@
-div.view-container {
+div {
   display: flex;
   flex-direction: column;
-  // padding: 0.5rem;
-
-  // div.day-list {
-  //   display: flex;
-  //   flex-direction: column;
-  //   flex: 1;
-  //   margin: 0.5rem;
-
-  // //   mat-card {
-  // //     padding: 0rem;
-
-  // //     mat-list-item {
-  // //       cursor: pointer;
-
-  // //       &:hover {
-  // //         background-color: rgba(63, 81, 181, 0.1);
-  // //       }
-  // //     }
-
-  //     mat-list-item.active-day {
-  //       background-color: rgba(63, 81, 181, 1);
-  //       color: rgba(255, 255, 255, 1);
-  //     }
-
-  //     div.card-title {
-  //       display: flex;
-  //       flex-direction: column;
-  //       padding-top: 1rem;
-  //       font-size: 1.75rem;
-  //     }
-
-  //     div.day-index {
-  //       display: flex;
-  //       flex-direction: column;
-  //       padding: 0.5rem 0rem;
-  //       font-size: 1.3rem;
-  //     }
-
-  //     div.day-place-holder {
-  //       display: flex;
-  //       align-items: center;
-  //     }
-  //   }
-  // }
-
-  // div.day-details {
-  //   display: flex;
-  //   flex-direction: column;
-  //   flex: 3;
-  //   margin: 0.5rem;
-
-  // //   mat-tab-group {
-  // //    display: flex;
-  // //    flex-direction: row;
-
-  // //     ::ng-deep div.mat-tab-labels {
-  // //       flex-direction: column;
-  // //     }
-  // //   }
-
-  //   div.tab-content {
-  //     padding: 0.5rem 0rem;
-  //   }
-
-  //   div.tab-content#hotel-card-holder {
-  //     display: flex;
-  //     flex-flow: row wrap;
-  //     justify-content: space-around;
-  //   }
-
-  //   mat-card.hotel-card {
-  //     width: 25rem;
-  //     margin: 0.5rem;
-  //     ::ng-deep div.mat-card-header-text {
-  //       display: flex;
-  //       flex-direction: column;
-  //       flex-grow: 1;
-  //     }
-  //     div.hotel-detail-holder {
-  //       display: flex;
-  //       justify-content: space-between;
-  //       align-items: center;
-  //     }
-  //   }
-  // }
-
+}
+div.view-container {
   mat-tab-group {
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
 
     /deep/ {
-      mat-tab-header.mat-tab-header {
-        border-bottom: 0px solid rgba(0, 0, 0, 0);
-        min-width: 15rem;
-        max-width: 25rem;
-      }
+      //   mat-tab-header.mat-tab-header {
+      //     border-bottom: 0px solid rgba(0, 0, 0, 0);
+      //     // min-width: 15rem;
+      //     // max-width: 25rem;
+      //   }
 
-      div.mat-tab-labels {
-        flex-direction: column;
-      }
+      //   div.mat-tab-labels {
+      //     flex-direction: column;
+      //   }
 
       div.mat-tab-label {
-        height: auto;
-        justify-content: flex-start;
-        align-items: flex-start;
+        height: unset;
+        min-height: 3rem;
+        // justify-content: flex-start;
+        // align-items: flex-start;
+        padding: 1rem;
       }
 
       div.mat-tab-label-active {
         opacity: 1;
       }
 
-      mat-ink-bar.mat-ink-bar {
-        display: none;
-      }
+      //   mat-ink-bar.mat-ink-bar {
+      //     display: none;
+      //   }
 
-      div.mat-tab-header-pagination {
-        display: none;
-      }
+      //   div.mat-tab-header-pagination {
+      //     display: none;
+      //   }
 
-      div.mat-tab-body-wrapper {
-        flex: 1 1 auto;
-      }
+      //   div.mat-tab-body-wrapper {
+      //     flex: 1 1 auto;
+      //   }
     }
 
-    mat-tab-group {
+    // mat-tab-group {
+    // display: flex;
+    // flex-direction: column;
+
+    // /deep/ {
+    //   mat-tab-header.mat-tab-header {
+    //     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    //     min-width: unset;
+    //     max-width: unset;
+    //   }
+
+    //   div.mat-tab-labels {
+    //     flex-direction: row;
+    //   }
+
+    //   div.mat-tab-label {
+    //     height: 3rem;
+    //     justify-content: center;
+    //     align-items: center;
+    //   }
+
+    //   div.mat-tab-label-active {
+    //     opacity: 1 !important;
+    //   }
+
+    //   mat-ink-bar.mat-ink-bar {
+    //     display: flex;
+    //   }
+
+    //   div.mat-tab-header-pagination {
+    //     display: flex;
+    //     align-self: stretch;
+    //   }
+
+    //   div.mat-tab-body-wrapper {
+    //     flex: 1 0 auto;
+    //   }
+    // }
+
+    div.tab-content {
       display: flex;
+      // padding: 0.5rem;
       flex-direction: column;
 
-      /deep/ {
-        mat-tab-header.mat-tab-header {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-          min-width: unset;
-          max-width: unset;
-        }
-
-        div.mat-tab-labels {
-          flex-direction: row;
-        }
-
-        div.mat-tab-label {
-          height: 3rem;
-          justify-content: center;
-          align-items: center;
-        }
-
-        div.mat-tab-label-active {
-          opacity: 1 !important;
-        }
-
-        mat-ink-bar.mat-ink-bar {
-          display: flex;
-        }
-
-        div.mat-tab-header-pagination {
-          display: flex;
-          align-self: stretch;
-        }
-
-        div.mat-tab-body-wrapper {
-          flex: 1 0 auto;
-        }
+      > * {
+        margin: 0.5rem;
       }
 
-      div.tab-content {
-        display: flex;
-        // padding: 0.5rem;
-        flex-direction: column;
+      &.attraction-card-holder {
+        flex-flow: row wrap;
+        justify-content: space-around;
 
-        > * {
+        mat-card.attraction-card {
+          width: 25rem;
           margin: 0.5rem;
         }
+      }
 
-        &.attraction-card-holder {
-          flex-flow: row wrap;
-          justify-content: space-around;
+      div.stay-card-holder {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
 
-          mat-card.attraction-card {
-            width: 25rem;
-          }
-        }
+        mat-card.stay-card {
+          width: 25rem;
+          margin: 0.5rem;
 
-        div.hotel-card-holder {
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: space-around;
-
-          mat-card.hotel-card {
-            width: 25rem;
-
-            /deep/ {
-              div.mat-card-header-text {
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-              }
-            }
-
-            div.hotel-detail-holder {
+          /deep/ {
+            div.mat-card-header-text {
               display: flex;
-              justify-content: space-between;
-              align-items: center;
+              flex-direction: column;
+              flex-grow: 1;
             }
+          }
 
-            mat-card-content {
-              div.table-holder {
-                display: flex;
-                flex-direction: column;
-              }
+          div.stay-detail-holder {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          mat-card-content {
+            div.table-holder {
+              display: flex;
+              flex-direction: column;
             }
           }
         }
       }
+
+      div.trip-entity-location {
+        margin-bottom: 0.5rem;
+        font-style: italic;
+        color: rgba(127, 127, 127, 1);
+      }
+
+      div.trip-entity-description {
+        white-space: pre-wrap;
+        margin-top: 0.5rem;
+      }
     }
+    // }
 
     div.label-holder {
       display: flex;
@@ -228,10 +159,28 @@ div.view-container {
         }
       }
 
+      div.day-date,
       div.day-place-holder {
-        display: flex;
+        flex-direction: row;
         align-items: center;
       }
     }
+  }
+}
+
+div.no-trip-entity-message {
+  padding: 1rem 0rem;
+  font-style: italic;
+  color: rgba(196, 196, 196, 1);
+}
+
+div.button-holder {
+  flex-direction: row;
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: 1;
+  div.button {
+    margin: 1rem;
   }
 }

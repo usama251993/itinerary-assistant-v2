@@ -1,0 +1,58 @@
+<form action="javascript:void(0)" [formGroup]="attractionFormGroup">
+  <mat-card class="attraction-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="attraction-card-title-holder">
+          <div class="attraction-card-title">
+            <!-- <span>Add attraction details</span> -->
+            <span *ngIf="attractionFormGroup.get('name').value; else defaultAttraction">Edit details
+              for {{ attractionFormGroup.get('name').value }}</span>
+            <ng-template #defaultAttraction>
+              <span>Add Attraction details</span>
+            </ng-template>
+          </div>
+          <div class="button-holder">
+            <div class="button">
+              <button mat-raised-button mat-icon-button (click)="deleteAttraction(attractionIndex)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-field-holder">
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Name of attraction" formControlName="name">
+            <mat-error *ngIf="attractionFormGroup.get('name').hasError('required')">
+              <span>Attraction Name is required</span>
+            </mat-error>
+            <button mat-button matSuffix mat-icon-button tabindex="0" *ngIf="attractionFormGroup.get('name').value"
+              (click)="clearInput(attractionFormGroup.get('name'))">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Location of Attraction" formControlName="location">
+            <button mat-button matSuffix mat-icon-button tabindex="0" *ngIf="attractionFormGroup.get('location').value"
+              (click)="clearInput(attractionFormGroup.get('location'))">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field>
+            <textarea matInput placeholder="Details of attraction" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</form>

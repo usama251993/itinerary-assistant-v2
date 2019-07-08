@@ -1,0 +1,30 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.form-holder {
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+div.form-field-holder {
+  margin: 0rem 0.5rem;
+  flex-flow: row wrap;
+
+  div.form-field {
+    flex: 1;
+    margin: 0rem 0.5rem;
+  }
+}
+
+div.button-holder {
+  div.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0.5rem 0rem 0.5rem 1rem;
+  }
+}

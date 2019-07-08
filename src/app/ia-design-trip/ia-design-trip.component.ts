@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+
 import { IaTripService } from '../shared/services/ia-trip.service';
-import { FormBuilder } from '@angular/forms';
 
 export interface sourceDetails {
   source: string;
@@ -18,19 +19,42 @@ export class IaDesignTripComponent implements OnInit {
   emptyRoomData = [{ type: "", cost: 0 }];
   displayedColumns: string[] = ["type", "cost"];
   sourceDetails: sourceDetails = { source: "", startDate: "" };
+  designForm: FormGroup = this.formBuilder.group({});
+  daysArray: FormArray = this.formBuilder.array([]);
+
 
   constructor(private tripService: IaTripService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    if (this.tripService.tripInitData === undefined) {
-      this.tripService.tripInitData = new FormData();
-      this.tripService.tripInitData["source"] = "Mumbai";
-      this.tripService.tripInitData["startDate"] = new Date();
-    }
-    this.sourceDetails.source = this.tripService.tripInitData["source"];
-    this.sourceDetails.startDate = (this.tripService.tripInitData["startDate"] as Date).toDateString();
+    // this.populateSourceDetails(this.tripService.tripInitData, this.sourceDetails);
+    // this.designForm = this.formBuilder.group({
+    //   days: this.daysArray
+    // })
+  }
 
+  get days() {
+    // return this.designForm.get("days") as FormArray;
+    return 0;
+  }
+
+  addNewDay() {
+    // this.days.push(this.formBuilder.group({
+    // }));
+  }
+
+  deleteRow(index: number) {
+    // this.days.removeAt(index);
+  }
+
+  populateSourceDetails(tripInitData: FormData, sourceDetails: sourceDetails) {
+    //   if (tripInitData === undefined) {
+    //     tripInitData = new FormData();
+    //     tripInitData["source"] = "Mumbai";
+    //     tripInitData["startDate"] = new Date();
+    //   }
+    //   sourceDetails.source = tripInitData["source"];
+    //   sourceDetails.startDate = (tripInitData["startDate"] as Date).toDateString();
   }
 
 }

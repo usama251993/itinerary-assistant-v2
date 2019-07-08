@@ -7,7 +7,7 @@ export class IaPlaceStayModel {
   constructor(public stay: {
     name: string,
     address: string,
-    contact: number,
+    contact: string,
     rooms: IaStayRoomModel[]
   }) { }
 

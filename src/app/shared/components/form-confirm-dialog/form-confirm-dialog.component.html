@@ -1,0 +1,19 @@
+<div class="confirm-dialog-holder">
+  <div class="message-holder">
+    <div class="message">
+      <span>Delete entry?</span>
+    </div>
+  </div>
+  <div class="button-holder">
+    <div class="button">
+      <button mat-raised-button mat-icon-button color="warn" (click)="dialogReference.dismiss(true)" #yesButton>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="button">
+      <button mat-raised-button mat-icon-button (click)="dialogReference.dismiss(false)" #noButton>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
