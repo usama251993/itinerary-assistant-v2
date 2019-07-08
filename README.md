@@ -44,6 +44,19 @@ Form Validation for Design Trip Component
 
 # Commit #3:
 
+Trip view component created and developed
+http://localhost:4200/view
+
+Further Steps
+Overview tab in View Component
+Modify New Trip form
+Integrate data filled in by the user into a service
+Populate the View Component using the data filled in by the user
+Integrate transit component properly
+Some modifications in User Interface
+
+# Commit #4:
+
 Design Trip form created
 
 Further Steps
