@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatStepper, MatDialog, MatDialogRef } from '@angular/material';
+import { MatStepper, MatDialog, MatDialogRef, MatHorizontalStepper } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { IaTripFormBuilderService } from '../shared/services/ia-trip/ia-trip-form-builder.service';
@@ -15,6 +15,8 @@ import { FormConfirmModalComponent } from '../shared/components/form-confirm-mod
   providers: [IaTripFormBuilderService]
 })
 export class IaNewTripComponent implements OnInit {
+
+  @ViewChild("masterStepper") masterStepper: MatHorizontalStepper;
 
   tripForm: FormGroup;
   newTrip: {} = { tripStart: { sourceCity: "", startDate: new Date(Date.now()) }, days: [] };
@@ -35,22 +37,30 @@ export class IaNewTripComponent implements OnInit {
     this.tripForm = this.tripFormBuilder.tripForm;
     this.today = this.tripFormBuilder.today;
     this.dateOptions = this.tripService.dateOptions;
+    // console.log(this.masterStepper);
 
     if (!this.editFlag) { } else {
       this.tripService.customSetValue(this.tripForm, this.tripService.newTrip as FormData);
+      let timeoutVar = 0;
+      timeoutVar = window.requestAnimationFrame(() => {
+        this.masterStepper.selectedIndex = 1;
+        window.cancelAnimationFrame(timeoutVar);
+      });
     }
+  }
+
+  logThis(data: any) {
+    console.log(data);
+
   }
 
   addNewDay(stepper: MatStepper): void {
     this.tripFormBuilder.addNewDay(stepper);
   }
 
-  getCurrentDate(startDate: Date, dayIndex: number) {
-    let formDate = new Date(startDate);
-    let currentDate = new Date(Date.now());
-    currentDate.setDate(formDate.getDate() + dayIndex);
-    currentDate.setMonth(formDate.getMonth());
-    currentDate.setFullYear(formDate.getFullYear());
+  getCurrentDate(startDate: Date, dayIndex: number): string {
+    let currentDate = new Date(startDate);
+    currentDate.setDate(new Date(startDate).getDate() + dayIndex);
     return currentDate.toLocaleDateString("en-IN", this.dateOptions);
   }
 

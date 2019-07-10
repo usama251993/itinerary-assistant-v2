@@ -5,15 +5,32 @@
 
     <mat-tab *ngFor="let singleDay of newTrip.days; let dayIndex = index">
       <ng-template mat-tab-label>
-        <div class="label-holder">
-          <div class="day-index">
-            <span>Day {{ dayIndex + 1 }}</span>
+        <div class="mat-tab-label-holder">
+          <div class="day-index"
+               *ngIf="dayIndex === 0; else notFirstDay">
+            <span>
+              <mat-icon>flight_land</mat-icon> Day {{ dayIndex + 1 }}
+            </span>
           </div>
+          <ng-template #notFirstDay>
+            <div class="day-index"
+                 *ngIf="dayIndex === newTrip.days.length - 1; else notLastDay">
+              <span>
+                <mat-icon>flight_takeoff</mat-icon> Day {{ dayIndex + 1 }}
+              </span>
+            </div>
+            <ng-template #notLastDay>
+              <div class="day-index">
+                <span>Day {{ dayIndex + 1 }}</span>
+              </div>
+            </ng-template>
+          </ng-template>
           <div class="day-date">
             <span>{{ getCurrentDate(newTrip.tripStart.startDate, dayIndex) }}</span>
           </div>
           <div class="day-place-holder">
-            <div class="day-place" *ngIf="singleDay.places.length === 1; else morePlaces">
+            <div class="day-place"
+                 *ngIf="singleDay.places.length === 1; else morePlaces">
               <span>{{ singleDay.places[0].name }} round trip</span>
             </div>
             <ng-template #morePlaces>
@@ -30,7 +47,8 @@
       </ng-template>
 
       <ng-container>
-        <mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+        <mat-tab-group mat-align-tabs="center"
+                       backgroundColor="primary">
           <!-- <mat-tab-group mat-align-tabs="center"> -->
           <!-- <mat-tab>
             <ng-template mat-tab-label>
@@ -40,56 +58,97 @@
 
           <mat-tab>
             <ng-template mat-tab-label>
-              <span>Tourist Attractions</span>
+              <div class="trip-entity-icon-holder">
+                <mat-icon>local_see</mat-icon>
+              </div>
+              <div class="mat-tab-label-holder">
+                <span>Tourist Attractions</span>
+              </div>
             </ng-template>
-            <div class="tab-content attraction-card-holder">
-              <mat-card class="attraction-card" *ngFor="let singlePlace of singleDay.places">
-                <mat-card-header>
-                  <mat-card-title>
-                    <span>{{ singlePlace.name }}</span>
-                  </mat-card-title>
-                  <mat-card-subtitle></mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                  <div class="no-trip-entity-message"
-                    *ngIf="singlePlace.attractions.length === 0; else placeAttractions">
-                    <span>Attraction data not available for {{ singlePlace.name }}</span>
-                  </div>
-                  <ng-template #placeAttractions>
-                    <mat-accordion>
-                      <mat-expansion-panel *ngFor="let singleAttraction of singlePlace.attractions">
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            <span>{{ singleAttraction.name }}</span>
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <div class="expansion-panel-contents">
-                          <div class="trip-entity-location">
-                            <span
-                              *ngIf="singleAttraction.location; else noAttractionLocation">{{ singleAttraction.location }}</span>
-                            <ng-template #noAttractionLocation>
-                              <span>Location Information not available</span>
+            <div class="tab-content ">
+              <div class="trip-entity-card-holder">
+                <mat-card class="trip-entity-card"
+                          *ngFor="let singlePlace of singleDay.places">
+                  <mat-card-header>
+                    <mat-card-title>
+                      <span>{{ singlePlace.name }}</span>
+                    </mat-card-title>
+                    <mat-card-subtitle></mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="no-trip-entity-message trip-entity-missing-information-holder"
+                         *ngIf="singlePlace.attractions.length === 0; else placeAttractions">
+                      <div class="trip-entity-icon-holder">
+                        <mat-icon>clear</mat-icon>
+                      </div>
+                      <div class="trip-entity-missing-information">
+                        <span>Attraction data not available for {{ singlePlace.name }}</span>
+                      </div>
+                    </div>
+                    <ng-template #placeAttractions>
+                      <mat-accordion>
+                        <mat-expansion-panel *ngFor="let singleAttraction of singlePlace.attractions">
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              <span>{{ singleAttraction.name }}</span>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <div class="expansion-panel-contents">
+                            <div class="trip-entity-address-holder"
+                                 *ngIf="singleAttraction.location !== ''; else noAttractionAddress">
+                              <div class="trip-entity-icon-holder">
+                                <mat-icon>place</mat-icon>
+                              </div>
+                              <div class="trip-entity-address">
+                                <span>{{ singleAttraction.location }}</span>
+                              </div>
+                            </div>
+                            <ng-template #noAttractionAddress>
+                              <div class="no-trip-entity-message trip-entity-missing-information-holder">
+                                <div class="trip-entity-icon-holder">
+                                  <mat-icon>not_listed_location</mat-icon>
+                                </div>
+                                <div class="trip-entity-missing-information">
+                                  <span>Location Information not available</span>
+                                </div>
+                              </div>
                             </ng-template>
-                          </div>
-                          <div class="trip-entity-description">
-                            <span
-                              *ngIf="singleAttraction.description; else noAttractionDescription">{{ singleAttraction.description }}</span>
+                            <div class="trip-entity-description-holder">
+                              <div class="trip-entity-description">
+                                <span
+                                      *ngIf="singleAttraction.description; else noAttractionDescription">{{ singleAttraction.description }}</span>
+                              </div>
+                            </div>
                             <ng-template #noAttractionDescription>
-                              <span>No description available</span>
+                              <div class="no-trip-entity-message">
+                                <div class="trip-entity-description trip-entity-missing-information-holder">
+                                  <div class="trip-entity-icon-holder">
+                                    <mat-icon>clear</mat-icon>
+                                  </div>
+                                  <div class="trip-entity-missing-information">
+                                    <span>No description available</span>
+                                  </div>
+                                </div>
+                              </div>
                             </ng-template>
                           </div>
-                        </div>
-                      </mat-expansion-panel>
-                    </mat-accordion>
-                  </ng-template>
-                </mat-card-content>
-              </mat-card>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                    </ng-template>
+                  </mat-card-content>
+                </mat-card>
+              </div>
             </div>
           </mat-tab>
 
           <mat-tab>
             <ng-template mat-tab-label>
-              <span>Stay</span>
+              <div class="trip-entity-icon-holder">
+                <mat-icon>hotel</mat-icon>
+              </div>
+              <div class="mat-tab-label-holder">
+                <span>Stays</span>
+              </div>
             </ng-template>
             <div class="tab-content">
               <mat-accordion>
@@ -99,40 +158,90 @@
                       <span>{{ singlePlace.name }}</span>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="no-trip-entity-message" *ngIf="singlePlace.stays.length === 0; else placeStays">
-                    <span>Stay data not available for {{ singlePlace.name }}</span>
+                  <div class="no-trip-entity-message trip-entity-missing-information-holder"
+                       *ngIf="singlePlace.stays.length === 0; else placeStays">
+                    <div class="trip-entity-icon-holder">
+                      <mat-icon>clear</mat-icon>
+                    </div>
+                    <div class="trip-entity-missing-information">
+                      <span>Stay data not available for {{ singlePlace.name }}</span>
+                    </div>
                   </div>
                   <ng-template #placeStays>
                     <div class="expansion-panel-content">
-                      <div class="stay-card-holder">
-                        <mat-card class="stay-card" *ngFor="let singleStay of singlePlace.stays">
+                      <div class="trip-entity-card-holder">
+                        <mat-card class="trip-entity-card"
+                                  *ngFor="let singleStay of singlePlace.stays">
                           <mat-card-header>
                             <mat-card-title>
-                              <div class="stay-name">
-                                <span>{{ singleStay.name }}</span>
+                              <div class="trip-entity-name-holder">
+                                <div class="trip-entity-icon-holder">
+                                  <mat-icon>hotel</mat-icon>
+                                </div>
+                                <div class="trip-entity-name">
+                                  <span>{{ singleStay.name }}</span>
+                                </div>
                               </div>
                             </mat-card-title>
                             <mat-card-subtitle>
-                              <div class="stay-detail-holder">
-                                <div class="stay-address-holder">
-                                  <div class="stay-address">
+                              <div class="trip-entity-detail-holder">
+                                <div class="trip-entity-address-holder"
+                                     *ngIf="singleStay.address !== ''; else noStayAddress">
+                                  <div class="trip-entity-icon-holder">
+                                    <mat-icon>place</mat-icon>
+                                  </div>
+                                  <div class="trip-entity-address">
                                     <span>{{ singleStay.address }}</span>
                                   </div>
                                 </div>
-                                <div class="stay-contact-holder">
-                                  <div class="stay-contact" *ngFor="let contact of singleStay.contacts">
-                                    <span>{{ contact }}</span>
+                                <ng-template #noStayAddress>
+                                  <div class="no-trip-entity-message trip-entity-missing-information-holder">
+                                    <div class="trip-entity-icon-holder">
+                                      <mat-icon>not_listed_location</mat-icon>
+                                    </div>
+                                    <div class="trip-entity-address">
+                                      <span>Address unavailable</span>
+                                    </div>
+                                  </div>
+                                </ng-template>
+                                <div class="no-trip-entity-message trip-entity-missing-information-holder"
+                                     *ngIf="singleStay.contacts.length === 0 || singleStay.contacts[0] === ''; else stayContacts">
+                                  <div class="trip-entity-icon-holder">
+                                    <mat-icon>clear</mat-icon>
+                                  </div>
+                                  <div class="trip-entity-missing-information">
+                                    <span>Contacts unavailable</span>
                                   </div>
                                 </div>
+                                <ng-template #stayContacts>
+                                  <div class="trip-entity-contact-holder">
+                                    <div class="trip-entity-icon-holder">
+                                      <mat-icon>phone</mat-icon>
+                                    </div>
+                                    <div class="trip-entity-contact-list-holder">
+                                      <div class="trip-entity-contact"
+                                           *ngFor="let contact of singleStay.contacts">
+                                        <span>{{ contact }}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </ng-template>
                               </div>
                             </mat-card-subtitle>
                           </mat-card-header>
                           <mat-card-content>
-                            <div class="no-trip-entity-message" *ngIf="singleStay.rooms.length === 0; else roomTable">
-                              <span>No Rooms entered for {{ singleStay.name }}</span>
+                            <mat-divider></mat-divider>
+                            <div class="no-trip-entity-message trip-entity-missing-information-holder"
+                                 *ngIf="singleStay.rooms.length === 0; else roomTable">
+                              <div class="trip-entity-icon-holder">
+                                <mat-icon>clear</mat-icon>
+                              </div>
+                              <div class="trip-entity-missing-information">
+                                <span>No rooms rates available for {{ singleStay.name }}</span>
+                              </div>
                             </div>
                             <ng-template #roomTable>
-                              <div class="table-holder">
+                              <div class="trip-entity-table-holder">
                                 <mat-table [dataSource]="singleStay.rooms">
                                   <ng-container matColumnDef="type">
                                     <mat-header-cell *matHeaderCellDef>
@@ -202,14 +311,23 @@
 
   <div class="button-holder">
     <div class="button">
-      <button mat-raised-button mat-icon-button color="primary" matTooltip="Edit Trip" (click)="editTrip(newTrip)">
+      <button mat-raised-button
+              mat-icon-button
+              color="primary"
+              matTooltip="Edit Trip"
+              matTooltipPosition="left"
+              (click)="editTrip(newTrip)">
         <!-- <span>Edit Trip</span> -->
         <mat-icon>edit</mat-icon>
       </button>
     </div>
     <div class="button">
-      <button mat-raised-button mat-icon-button color="primary" matTooltip="Export as JSON"
-        (click)="exportTrip(newTrip)">
+      <button mat-raised-button
+              mat-icon-button
+              color="primary"
+              matTooltip="Export as JSON"
+              matTooltipPosition="left"
+              (click)="exportTrip(newTrip)">
         <!-- <span>JSON Export</span> -->
         <mat-icon>insert_drive_file</mat-icon>
       </button>

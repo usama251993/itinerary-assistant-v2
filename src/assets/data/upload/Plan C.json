@@ -76,8 +76,7 @@
               "name": "Hotel Elysium",
               "address": "7C8C+M4 Bomdila, Arunachal Pradesh",
               "contacts": [
-                "094020 71827",
-                "Hotel Elysium Alternate Contact"
+                "094020 71827"
               ],
               "rooms": []
             },
@@ -895,7 +894,7 @@
             },
             {
               "name": "Dekasang Majuli",
-              "address": "X5R3+H5 மஜுலி, Assam",
+              "address": "X5R3+H5 Natun Kulamora Chapori N.C., Assam",
               "contacts": [
                 "098547 15435"
               ],
@@ -1065,8 +1064,8 @@
               "description": "Kaziranga National Park is a protected area in the northeast Indian state of Assam. Spread across the floodplains of the Brahmaputra River, its forests, wetlands and grasslands are home to tigers, elephants and the world’s largest population of Indian one-horned rhinoceroses. Ganges River dolphins swim in the park’s waters. It’s visited by many rare migratory birds, and gray pelicans roost near Kaziranga village.\nJeep / Elephant Safari"
             },
             {
-              "name": "Leave for Kamakhya",
-              "location": "Kaziranga to Kamakhya",
+              "name": "Leave for Guwahati",
+              "location": "Kaziranga to Guwahati",
               "description": "Approximately 5h required to travel about 200km"
             }
           ],
@@ -1120,7 +1119,7 @@
           ]
         },
         {
-          "name": "Kamakhya",
+          "name": "Guwahati",
           "attractions": [
             {
               "name": "Kamakhya Temple",
@@ -1203,8 +1202,8 @@
           "attractions": [
             {
               "name": "Leave for Krang Shuri",
-              "location": "",
-              "description": ""
+              "location": "Shillong to Krang Shuri",
+              "description": "Approximately 3h required to travel about 100km"
             }
           ],
           "stays": [
@@ -1642,7 +1641,70 @@
               "description": "Approximately 3h required to travel about 90km\nOne halt at Khasi village would require 6h to reach Mawsynram"
             }
           ],
-          "stays": []
+          "stays": [
+            {
+              "name": "Jiva Resort",
+              "address": "7P6X+92 Cherrapunjee, Meghalaya",
+              "contacts": [
+                "070851 77777"
+              ],
+              "rooms": []
+            },
+            {
+              "name": "Saimika Resort",
+              "address": "7PQ3+5H Cherrapunjee, Meghalaya",
+              "contacts": [
+                "098622 21718"
+              ],
+              "rooms": [
+                {
+                  "type": "multiple",
+                  "cost": 3240
+                }
+              ]
+            },
+            {
+              "name": "Cafe Cherrapunjee",
+              "address": "CQHR+RR Mawjrong, Meghalaya",
+              "contacts": [
+                "087309 45471"
+              ],
+              "rooms": []
+            },
+            {
+              "name": "Polo Orchid Resort",
+              "address": "6PMM+GQ Cherrapunjee, Meghalaya",
+              "contacts": [
+                "087947 01637"
+              ],
+              "rooms": [
+                {
+                  "type": "multiple",
+                  "cost": 19199
+                },
+                {
+                  "type": "multiple",
+                  "cost": 20223
+                }
+              ]
+            },
+            {
+              "name": "Kutmadan Resort",
+              "address": "6QX4+33 Cherrapunjee, Meghalaya",
+              "contacts": [
+                "087309 45471"
+              ],
+              "rooms": []
+            },
+            {
+              "name": "Cherrapunjee Holiday Resort",
+              "address": "6M97+Q4 Cherrapunjee, Meghalaya",
+              "contacts": [
+                "087948 03833"
+              ],
+              "rooms": []
+            }
+          ]
         },
         {
           "name": "Khasi Village",

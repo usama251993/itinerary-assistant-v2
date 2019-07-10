@@ -38,10 +38,8 @@ export class IaViewTripComponent implements OnInit {
   }
 
   getCurrentDate(startDate: Date, dayIndex: number): string {
-    let currentDate = new Date(Date.now());
+    let currentDate = new Date(startDate);
     currentDate.setDate(new Date(startDate).getDate() + dayIndex);
-    currentDate.setMonth(new Date(startDate).getMonth());
-    currentDate.setFullYear(new Date(startDate).getFullYear());
     return currentDate.toLocaleDateString("en-IN", this.dateOptions);
   }
 

@@ -44,19 +44,6 @@ Form Validation for Design Trip Component
 
 # Commit #3:
 
-Trip view component created and developed
-http://localhost:4200/view
-
-Further Steps
-Overview tab in View Component
-Modify New Trip form
-Integrate data filled in by the user into a service
-Populate the View Component using the data filled in by the user
-Integrate transit component properly
-Some modifications in User Interface
-
-# Commit #4:
-
 Design Trip form created
 
 Further Steps
@@ -144,3 +131,16 @@ Further Steps
 2. Transit Moule from Commit #3
 3. Trip Overview Component to be designed
 4. Add CanDeactivate guard on Trip Form
+
+#Commit #8:
+Improved the User Interface of Tabbed View Page by adding material icons
+Changes done only in ia-view-trip component
+Fixed the behaviour of date in tab header
+
+Transit is currently placed as the last entry of attractions array
+
+Further Steps:
+1. Add CanDeactivate Guard on Trip Form
+2. Lazily Load data while the trip is being edited or viewed
+  a. Lazy Loading to be achieved by cloning the newTrip property into a new property and loading only the active stepper specific contents in the newTrip property
+3. Migration of JSON Data into RDBMS data?
